@@ -297,12 +297,40 @@ class _DetailsPlutogridWidgetState extends State<DetailsPlutogridWidget> {
         mode: PlutoGridMode.normal,
         columns: _columns,
         rows: rows,
-        configuration: const PlutoGridConfiguration(
+        configuration: PlutoGridConfiguration(
           columnSize: PlutoGridColumnSizeConfig(
             autoSizeMode: PlutoAutoSizeMode.none,
             resizeMode: PlutoResizeMode.normal,
           ),
-          style: PlutoGridStyleConfig(rowHeight: 40),
+          style: PlutoGridStyleConfig(
+            rowHeight: 48,
+            gridBackgroundColor:
+                FlutterFlowTheme.of(context).secondaryBackground,
+            oddRowColor: FlutterFlowTheme.of(context).secondaryBackground,
+            evenRowColor: FlutterFlowTheme.of(context).primaryBackground,
+            columnTextStyle: TextStyle(
+              color: FlutterFlowTheme.of(context).primaryText,
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              fontFamily: 'Inter',
+            ),
+            cellTextStyle: TextStyle(
+              color: FlutterFlowTheme.of(context).primaryText,
+              fontSize: 14,
+              fontFamily: 'Roboto',
+            ),
+            borderColor: FlutterFlowTheme.of(context).accent1,
+            gridBorderColor: FlutterFlowTheme.of(context).accent1,
+            activatedColor: FlutterFlowTheme.of(context).accent2,
+            activatedBorderColor: FlutterFlowTheme.of(context).primary,
+            defaultCellPadding:
+                const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            defaultColumnTitlePadding:
+                const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+            iconColor: FlutterFlowTheme.of(context).secondaryText,
+            menuBackgroundColor:
+                FlutterFlowTheme.of(context).secondaryBackground,
+          ),
         ),
         onLoaded: (e) {
           _stateManager = e.stateManager;

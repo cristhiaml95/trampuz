@@ -1470,13 +1470,57 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
         mode: PlutoGridMode.normal,
         columns: _columns,
         rows: rows,
-        configuration: const PlutoGridConfiguration(
+        configuration: PlutoGridConfiguration(
           columnSize: PlutoGridColumnSizeConfig(
             autoSizeMode: PlutoAutoSizeMode.none,
             resizeMode: PlutoResizeMode.normal,
           ),
           style: PlutoGridStyleConfig(
-            rowHeight: 40,
+            // Altura de fila con mejor espaciado
+            rowHeight: 48,
+
+            // Colores de fondo según tema
+            gridBackgroundColor:
+                FlutterFlowTheme.of(context).secondaryBackground,
+            oddRowColor: FlutterFlowTheme.of(context).secondaryBackground,
+            evenRowColor: FlutterFlowTheme.of(context).primaryBackground,
+
+            // Colores de header con mejor contraste
+            columnTextStyle: TextStyle(
+              color: FlutterFlowTheme.of(context).primaryText,
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              fontFamily: 'Inter',
+            ),
+
+            // Estilos de celda con buen contraste
+            cellTextStyle: TextStyle(
+              color: FlutterFlowTheme.of(context).primaryText,
+              fontSize: 14,
+              fontFamily: 'Roboto',
+            ),
+
+            // Bordes sutiles
+            borderColor: FlutterFlowTheme.of(context).accent1,
+            gridBorderColor: FlutterFlowTheme.of(context).accent1,
+
+            // Color de selección
+            activatedColor: FlutterFlowTheme.of(context).accent2,
+            activatedBorderColor: FlutterFlowTheme.of(context).primary,
+
+            // Padding de celdas para mejor espaciado
+            defaultCellPadding:
+                const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            defaultColumnTitlePadding:
+                const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+
+            // Color de iconos en header
+            iconColor: FlutterFlowTheme.of(context).secondaryText,
+            disabledIconColor: FlutterFlowTheme.of(context).accent1,
+
+            // Menú contextual
+            menuBackgroundColor:
+                FlutterFlowTheme.of(context).secondaryBackground,
           ),
         ),
         onRowDoubleTap: (e) {

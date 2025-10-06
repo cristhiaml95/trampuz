@@ -142,22 +142,24 @@ class LightModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFFEA2027);
-  late Color secondary = const Color(0xFF208CEA);
-  late Color tertiary = const Color(0xFFFCCCCE);
-  late Color alternate = const Color(0xFF03213B);
-  late Color primaryText = const Color(0xFF14181B);
-  late Color secondaryText = const Color(0xFF57636C);
-  late Color primaryBackground = const Color(0xFFF1F4F8);
-  late Color secondaryBackground = const Color(0xFFFFFFFF);
-  late Color accent1 = const Color(0xFFCBCBCB);
-  late Color accent2 = const Color(0x4D39D2C0);
-  late Color accent3 = const Color(0x4DEE8B60);
-  late Color accent4 = const Color(0xC4B9B8B8);
-  late Color success = const Color(0xFF20EA7E);
-  late Color warning = const Color(0xFFF7CA05);
-  late Color error = const Color(0xFFFF5963);
-  late Color info = const Color(0xFF7E20EA);
+  late Color primary =
+      const Color(0xFF003D7A); // Navy blue profesional (confianza/autoridad)
+  late Color secondary = const Color(0xFF0066CC); // Azure blue corporativo
+  late Color tertiary = const Color(0xFFE8F2F7); // Light blue subtle
+  late Color alternate = const Color(0xFF475569); // Slate gray profesional
+  late Color primaryText =
+      const Color(0xFF0F172A); // Almost black con matiz azul
+  late Color secondaryText = const Color(0xFF64748B); // Medium gray legible
+  late Color primaryBackground = const Color(0xFFF8FAFC); // Off-white moderno
+  late Color secondaryBackground = const Color(0xFFFFFFFF); // White puro
+  late Color accent1 = const Color(0xFFCBD5E1); // Light slate
+  late Color accent2 = const Color(0x4D0066CC); // Secondary con alpha
+  late Color accent3 = const Color(0x4D10B981); // Success con alpha
+  late Color accent4 = const Color(0xFFE2E8F0); // Very light gray
+  late Color success = const Color(0xFF10B981); // Green profesional (emerald)
+  late Color warning = const Color(0xFFF59E0B); // Amber corporativo
+  late Color error = const Color(0xFFEF4444); // Red profesional
+  late Color info = const Color(0xFF3B82F6); // Blue information
 }
 
 abstract class Typography {
@@ -213,94 +215,111 @@ class ThemeTypography extends Typography {
 
   final FlutterFlowTheme theme;
 
-  String get displayLargeFamily => 'Open Sans';
+  String get displayLargeFamily => 'Inter';
   bool get displayLargeIsCustom => false;
-  TextStyle get displayLarge => GoogleFonts.openSans(
+  TextStyle get displayLarge => GoogleFonts.inter(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 64.0,
+        fontWeight: FontWeight.w700,
+        fontSize: 56.0,
+        height: 1.2,
+        letterSpacing: -0.5,
       );
-  String get displayMediumFamily => 'Open Sans';
+  String get displayMediumFamily => 'Inter';
   bool get displayMediumIsCustom => false;
-  TextStyle get displayMedium => GoogleFonts.openSans(
+  TextStyle get displayMedium => GoogleFonts.inter(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 44.0,
+        fontWeight: FontWeight.w700,
+        fontSize: 40.0,
+        height: 1.3,
+        letterSpacing: -0.5,
       );
-  String get displaySmallFamily => 'Open Sans';
+  String get displaySmallFamily => 'Inter';
   bool get displaySmallIsCustom => false;
-  TextStyle get displaySmall => GoogleFonts.openSans(
+  TextStyle get displaySmall => GoogleFonts.inter(
         color: theme.primaryText,
-        fontWeight: FontWeight.w600,
-        fontSize: 36.0,
-      );
-  String get headlineLargeFamily => 'Open Sans';
-  bool get headlineLargeIsCustom => false;
-  TextStyle get headlineLarge => GoogleFonts.openSans(
-        color: theme.primaryText,
-        fontWeight: FontWeight.w600,
+        fontWeight: FontWeight.w700,
         fontSize: 32.0,
+        height: 1.3,
+        letterSpacing: -0.3,
       );
-  String get headlineMediumFamily => 'Open Sans';
+  String get headlineLargeFamily => 'Inter';
+  bool get headlineLargeIsCustom => false;
+  TextStyle get headlineLarge => GoogleFonts.inter(
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
+        fontSize: 28.0,
+        height: 1.4,
+        letterSpacing: -0.2,
+      );
+  String get headlineMediumFamily => 'Inter';
   bool get headlineMediumIsCustom => false;
-  TextStyle get headlineMedium => GoogleFonts.openSans(
+  TextStyle get headlineMedium => GoogleFonts.inter(
         color: theme.primaryText,
-        fontWeight: FontWeight.normal,
+        fontWeight: FontWeight.w600,
         fontSize: 24.0,
+        height: 1.4,
       );
-  String get headlineSmallFamily => 'Open Sans';
+  String get headlineSmallFamily => 'Inter';
   bool get headlineSmallIsCustom => false;
-  TextStyle get headlineSmall => GoogleFonts.openSans(
+  TextStyle get headlineSmall => GoogleFonts.inter(
         color: theme.primaryText,
-        fontWeight: FontWeight.w500,
-        fontSize: 24.0,
+        fontWeight: FontWeight.w600,
+        fontSize: 20.0,
+        height: 1.5,
       );
-  String get titleLargeFamily => 'Open Sans';
+  String get titleLargeFamily => 'Inter';
   bool get titleLargeIsCustom => false;
-  TextStyle get titleLarge => GoogleFonts.openSans(
+  TextStyle get titleLarge => GoogleFonts.inter(
         color: theme.primaryText,
-        fontWeight: FontWeight.w500,
-        fontSize: 22.0,
+        fontWeight: FontWeight.w600,
+        fontSize: 20.0,
+        height: 1.5,
       );
-  String get titleMediumFamily => 'Roboto';
-  bool get titleMediumIsCustom => true;
-  TextStyle get titleMedium => TextStyle(
-        fontFamily: 'Roboto',
-        color: theme.info,
-        fontWeight: FontWeight.normal,
+  String get titleMediumFamily => 'Inter';
+  bool get titleMediumIsCustom => false;
+  TextStyle get titleMedium => GoogleFonts.inter(
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
         fontSize: 18.0,
+        height: 1.5,
       );
-  String get titleSmallFamily => 'Roboto';
-  bool get titleSmallIsCustom => true;
-  TextStyle get titleSmall => TextStyle(
-        fontFamily: 'Roboto',
-        color: theme.info,
-        fontWeight: FontWeight.w500,
+  String get titleSmallFamily => 'Inter';
+  bool get titleSmallIsCustom => false;
+  TextStyle get titleSmall => GoogleFonts.inter(
+        color: theme.primaryText,
+        fontWeight: FontWeight.w600,
         fontSize: 16.0,
+        height: 1.5,
       );
   String get labelLargeFamily => 'Roboto';
   bool get labelLargeIsCustom => true;
   TextStyle get labelLarge => TextStyle(
         fontFamily: 'Roboto',
         color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 16.0,
+        fontWeight: FontWeight.w500,
+        fontSize: 15.0,
+        height: 1.6,
+        letterSpacing: 0.1,
       );
   String get labelMediumFamily => 'Roboto';
   bool get labelMediumIsCustom => true;
   TextStyle get labelMedium => TextStyle(
         fontFamily: 'Roboto',
         color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 14.0,
+        fontWeight: FontWeight.w500,
+        fontSize: 13.0,
+        height: 1.6,
+        letterSpacing: 0.1,
       );
   String get labelSmallFamily => 'Roboto';
   bool get labelSmallIsCustom => true;
   TextStyle get labelSmall => TextStyle(
         fontFamily: 'Roboto',
         color: theme.secondaryText,
-        fontWeight: FontWeight.normal,
-        fontSize: 12.0,
+        fontWeight: FontWeight.w500,
+        fontSize: 11.0,
+        height: 1.6,
+        letterSpacing: 0.2,
       );
   String get bodyLargeFamily => 'Roboto';
   bool get bodyLargeIsCustom => true;
@@ -309,6 +328,8 @@ class ThemeTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 16.0,
+        height: 1.6,
+        letterSpacing: 0.15,
       );
   String get bodyMediumFamily => 'Roboto';
   bool get bodyMediumIsCustom => true;
@@ -317,6 +338,8 @@ class ThemeTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 14.0,
+        height: 1.6,
+        letterSpacing: 0.1,
       );
   String get bodySmallFamily => 'Roboto';
   bool get bodySmallIsCustom => true;
@@ -325,6 +348,8 @@ class ThemeTypography extends Typography {
         color: theme.primaryText,
         fontWeight: FontWeight.normal,
         fontSize: 12.0,
+        height: 1.6,
+        letterSpacing: 0.1,
       );
 }
 
@@ -336,22 +361,23 @@ class DarkModeTheme extends FlutterFlowTheme {
   @Deprecated('Use tertiary instead')
   Color get tertiaryColor => tertiary;
 
-  late Color primary = const Color(0xFF208CEA);
-  late Color secondary = const Color(0xFF39D2C0);
-  late Color tertiary = const Color(0xFF7AC0FB);
-  late Color alternate = const Color(0xFF4A5568);
-  late Color primaryText = const Color(0xFFFFFFFF);
-  late Color secondaryText = const Color(0xFFD1D5DB);
-  late Color primaryBackground = const Color(0xFF2D3748);
-  late Color secondaryBackground = const Color(0xFF1A202C);
-  late Color accent1 = const Color(0x4C4B39EF);
-  late Color accent2 = const Color(0x4D39D2C0);
-  late Color accent3 = const Color(0x4DEE8B60);
-  late Color accent4 = const Color(0xB2262D34);
-  late Color success = const Color(0xFF249689);
-  late Color warning = const Color(0xFFF9CF58);
-  late Color error = const Color(0xFFFF5963);
-  late Color info = const Color(0xFFFFFFFF);
+  late Color primary = const Color(0xFF3B82F6); // Bright blue para dark mode
+  late Color secondary = const Color(0xFF60A5FA); // Light blue accent
+  late Color tertiary = const Color(0xFF1E3A5F); // Dark blue subtle
+  late Color alternate = const Color(0xFF475569); // Slate gray consistente
+  late Color primaryText = const Color(0xFFF1F5F9); // Off-white suave
+  late Color secondaryText = const Color(0xFFCBD5E1); // Light slate legible
+  late Color primaryBackground =
+      const Color(0xFF0F172A); // Dark navy profesional
+  late Color secondaryBackground = const Color(0xFF1E293B); // Slate dark
+  late Color accent1 = const Color(0x4C3B82F6); // Primary con alpha
+  late Color accent2 = const Color(0x4D60A5FA); // Secondary con alpha
+  late Color accent3 = const Color(0x4D34D399); // Success con alpha
+  late Color accent4 = const Color(0xFF334155); // Dark slate
+  late Color success = const Color(0xFF34D399); // Emerald brillante
+  late Color warning = const Color(0xFFFBBF24); // Amber brillante
+  late Color error = const Color(0xFFF87171); // Red brillante
+  late Color info = const Color(0xFF93C5FD); // Light blue info
 }
 
 extension TextStyleHelper on TextStyle {
