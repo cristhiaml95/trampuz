@@ -25,7 +25,6 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -222,46 +221,36 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Icon(
-                                    Icons.doorbell_sharp,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    size: 32.0,
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(4.0),
+                                    child: Image.asset(
+                                      'assets/images/logo_image.png',
+                                      width: 32.0,
+                                      height: 32.0,
+                                      fit: BoxFit.contain,
+                                    ),
                                   ),
                                   if (FFAppState().navOpen == true)
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           12.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'i9sf0gpu' /* Trampuž */,
+                                      child: Container(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: 12.0, vertical: 4.0),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(6.0),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .override(
-                                              font: GoogleFonts.openSans(
-                                                fontWeight:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMedium
-                                                        .fontWeight,
-                                                fontStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .headlineMedium
-                                                        .fontStyle,
-                                              ),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              letterSpacing: 0.0,
-                                              fontWeight:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMedium
-                                                      .fontWeight,
-                                              fontStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .headlineMedium
-                                                      .fontStyle,
-                                            ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(4.0),
+                                          child: Image.asset(
+                                            'assets/images/logo.png',
+                                            height: 28.0,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                 ],
@@ -308,15 +297,12 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: SvgPicture.asset(
-                                                  'assets/images/reports.svg',
-                                                  width: 24.0,
-                                                  height: 24.0,
-                                                  fit: BoxFit.cover,
-                                                ),
+                                              Icon(
+                                                FontAwesomeIcons.chartLine,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
                                                 Padding(
@@ -375,15 +361,12 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: SvgPicture.asset(
-                                                  'assets/images/orderwarehouse.svg',
-                                                  width: 24.0,
-                                                  height: 24.0,
-                                                  fit: BoxFit.cover,
-                                                ),
+                                              Icon(
+                                                FontAwesomeIcons.boxesStacked,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
                                                 Padding(
@@ -444,15 +427,12 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: SvgPicture.asset(
-                                                  'assets/images/warehouse2.svg',
-                                                  width: 24.0,
-                                                  height: 24.0,
-                                                  fit: BoxFit.cover,
-                                                ),
+                                              Icon(
+                                                FontAwesomeIcons.warehouse,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
                                                 Padding(
@@ -513,15 +493,12 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: SvgPicture.asset(
-                                                  'assets/images/calendar.svg',
-                                                  width: 24.0,
-                                                  height: 24.0,
-                                                  fit: BoxFit.cover,
-                                                ),
+                                              Icon(
+                                                FontAwesomeIcons.calendarDays,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
                                                 Expanded(
@@ -587,15 +564,12 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: SvgPicture.asset(
-                                                  'assets/images/customs.svg',
-                                                  width: 24.0,
-                                                  height: 24.0,
-                                                  fit: BoxFit.cover,
-                                                ),
+                                              Icon(
+                                                FontAwesomeIcons.stamp,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
                                                 Padding(
@@ -765,15 +739,12 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: SvgPicture.asset(
-                                                  'assets/images/extras.svg',
-                                                  width: 24.0,
-                                                  height: 24.0,
-                                                  fit: BoxFit.cover,
-                                                ),
+                                              Icon(
+                                                FontAwesomeIcons.ellipsis,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
                                                 Padding(
@@ -2426,7 +2397,8 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                                                           .tablesRow
                                                                           .flow ==
                                                                       'in') {
-                                                                    return ((FFAppState().tablesRow.associatedOrder != '') &&
+                                                                    return ((FFAppState().tablesRow.associatedOrder !=
+                                                                                '') &&
                                                                             (FFAppState().tablesRow.associatedOrder !=
                                                                                 '0e0c37f1-96bc-4cc2-a3f6-094e5e8f059b')
                                                                         ? FFAppState()
@@ -3122,8 +3094,8 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                                   () async {
                                                     FFAppState().maxNumRows =
                                                         _model.rowsQuantityTFTextController
-                                                                        .text !=
-                                                                    ''
+                                                                    .text !=
+                                                                ''
                                                             ? valueOrDefault<
                                                                 String>(
                                                                 _model

@@ -143,23 +143,24 @@ class LightModeTheme extends FlutterFlowTheme {
   Color get tertiaryColor => tertiary;
 
   late Color primary =
-      const Color(0xFF003D7A); // Navy blue profesional (confianza/autoridad)
-  late Color secondary = const Color(0xFF0066CC); // Azure blue corporativo
-  late Color tertiary = const Color(0xFFE8F2F7); // Light blue subtle
-  late Color alternate = const Color(0xFF475569); // Slate gray profesional
+      const Color(0xFFC41E3A); // Rojo profesional profundo (inspirado en logo)
+  late Color secondary = const Color(0xFF1E293B); // Charcoal oscuro profesional
+  late Color tertiary = const Color(0xFFFEF2F2); // Light red tint muy sutil
+  late Color alternate = const Color(0xFF64748B); // Slate gray medio
   late Color primaryText =
-      const Color(0xFF0F172A); // Almost black con matiz azul
+      const Color(0xFF0F172A); // Almost black (alta legibilidad)
   late Color secondaryText = const Color(0xFF64748B); // Medium gray legible
   late Color primaryBackground = const Color(0xFFF8FAFC); // Off-white moderno
   late Color secondaryBackground = const Color(0xFFFFFFFF); // White puro
-  late Color accent1 = const Color(0xFFCBD5E1); // Light slate
-  late Color accent2 = const Color(0x4D0066CC); // Secondary con alpha
+  late Color accent1 = const Color(0xFFCBD5E1); // Light slate para bordes
+  late Color accent2 = const Color(0x4DC41E3A); // Rojo profesional con alpha
   late Color accent3 = const Color(0x4D10B981); // Success con alpha
   late Color accent4 = const Color(0xFFE2E8F0); // Very light gray
   late Color success = const Color(0xFF10B981); // Green profesional (emerald)
   late Color warning = const Color(0xFFF59E0B); // Amber corporativo
-  late Color error = const Color(0xFFEF4444); // Red profesional
-  late Color info = const Color(0xFF3B82F6); // Blue information
+  late Color error =
+      const Color(0xFFDC2626); // Red error (diferenciado del primary)
+  late Color info = const Color(0xFF0EA5E9); // Sky blue information
 }
 
 abstract class Typography {
