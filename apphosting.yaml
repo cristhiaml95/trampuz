@@ -1,16 +1,22 @@
 # App Hosting configuration for Flutter Web
+# Note: App Hosting requires a Node.js runtime, so we create a minimal server
 runConfig:
-  # Specify the Flutter version
-  runtime: flutter
+  runtime: nodejs20
 
 build:
-  # Build command for Flutter web
-  buildCommand: flutter build web --release
+  # Install Flutter and build the web app
+  buildCommand: |
+    # Install Flutter
+    git clone https://github.com/flutter/flutter.git -b stable --depth 1
+    export PATH="$PATH:`pwd`/flutter/bin"
+    flutter doctor
+    flutter pub get
+    flutter build web --release
   
   # Output directory where build artifacts are located
   outputDirectory: build/web
 
 env:
-  # Flutter build environment variables
-  - variable: FLUTTER_BUILD_WEB
-    value: "true"
+  # Environment variables
+  - variable: NODE_ENV
+    value: "production"

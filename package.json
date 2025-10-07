@@ -1,0 +1,11 @@
+{
+  "name": "trampuz-web",
+  "version": "4.2.0",
+  "description": "Trampuz Web Application - Flutter",
+  "scripts": {
+    "start": "echo 'Static site served by App Hosting'"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
