@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
 import 'login_model.dart';
@@ -342,6 +343,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       if (user == null) {
                                         return;
                                       }
+
+                                      await actions.getOrderWarehouseTable();
 
                                       context.goNamedAuth(
                                           OrderWarehouseWidget.routeName,

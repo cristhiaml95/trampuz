@@ -1905,18 +1905,17 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                           );
                                         }
                                       },
-                                      width: 240.0,
-                                      height: 36.0,
+                                      width: 200.0,
+                                      height: 40.0,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Roboto',
-                                            fontSize: 13.0,
                                             letterSpacing: 0.0,
                                           ),
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'custom_profiles' /* Select Profile */,
+                                        'j3zffrgj' /* Select grid */,
                                       ),
                                       icon: Icon(
                                         Icons.keyboard_arrow_down_rounded,

@@ -125,65 +125,77 @@ Future orderWarehouseAction(BuildContext context) async {
   if ((orderWarehouseApiOP.succeeded ?? true)) {
     if ((getCurrentRoute(context) == '/orderWarehouse') ||
         (getCurrentRoute(context) == '/')) {
-      FFAppState().orderWarehouseAS = ((orderWarehouseApiOP.jsonBody ?? '')
-              .toList()
-              .map<OrderWarehouseRowStruct?>(
-                  OrderWarehouseRowStruct.maybeFromMap)
-              .toList() as Iterable<OrderWarehouseRowStruct?>)
-          .withoutNulls
-          .toList()
-          .cast<OrderWarehouseRowStruct>();
-      FFAppState().orderWarehouseApiOPJsonList =
-          (orderWarehouseApiOP.jsonBody ?? '').toList().cast<dynamic>();
-      FFAppState().update(() {});
+      final jsonBody = orderWarehouseApiOP.jsonBody;
+      if (jsonBody != null && jsonBody is List && jsonBody.isNotEmpty) {
+        FFAppState().orderWarehouseAS = ((jsonBody)
+                .toList()
+                .map<OrderWarehouseRowStruct?>(
+                    OrderWarehouseRowStruct.maybeFromMap)
+                .toList() as Iterable<OrderWarehouseRowStruct?>)
+            .withoutNulls
+            .toList()
+            .cast<OrderWarehouseRowStruct>();
+        FFAppState().orderWarehouseApiOPJsonList =
+            jsonBody.toList().cast<dynamic>();
+        FFAppState().update(() {});
+      }
     } else if (getCurrentRoute(context) == '/warehouse2') {
-      FFAppState().orderWarehouseAS = ((orderWarehouseApiOP.jsonBody ?? '')
-              .toList()
-              .map<OrderWarehouseRowStruct?>(
-                  OrderWarehouseRowStruct.maybeFromMap)
-              .toList() as Iterable<OrderWarehouseRowStruct?>)
-          .withoutNulls
-          .toList()
-          .cast<OrderWarehouseRowStruct>();
-      FFAppState().warehouse2ApiOPJsonList =
-          (orderWarehouseApiOP.jsonBody ?? '').toList().cast<dynamic>();
-      FFAppState().update(() {});
+      final jsonBody = orderWarehouseApiOP.jsonBody;
+      if (jsonBody != null && jsonBody is List && jsonBody.isNotEmpty) {
+        FFAppState().orderWarehouseAS = ((jsonBody)
+                .toList()
+                .map<OrderWarehouseRowStruct?>(
+                    OrderWarehouseRowStruct.maybeFromMap)
+                .toList() as Iterable<OrderWarehouseRowStruct?>)
+            .withoutNulls
+            .toList()
+            .cast<OrderWarehouseRowStruct>();
+        FFAppState().warehouse2ApiOPJsonList =
+            jsonBody.toList().cast<dynamic>();
+        FFAppState().update(() {});
+      }
     } else if (getCurrentRoute(context) == '/customs') {
-      FFAppState().orderWarehouseAS = ((orderWarehouseApiOP.jsonBody ?? '')
-              .toList()
-              .map<OrderWarehouseRowStruct?>(
-                  OrderWarehouseRowStruct.maybeFromMap)
-              .toList() as Iterable<OrderWarehouseRowStruct?>)
-          .withoutNulls
-          .toList()
-          .cast<OrderWarehouseRowStruct>();
-      FFAppState().customsApiOPJsonList =
-          (orderWarehouseApiOP.jsonBody ?? '').toList().cast<dynamic>();
-      FFAppState().update(() {});
+      final jsonBody = orderWarehouseApiOP.jsonBody;
+      if (jsonBody != null && jsonBody is List && jsonBody.isNotEmpty) {
+        FFAppState().orderWarehouseAS = ((jsonBody)
+                .toList()
+                .map<OrderWarehouseRowStruct?>(
+                    OrderWarehouseRowStruct.maybeFromMap)
+                .toList() as Iterable<OrderWarehouseRowStruct?>)
+            .withoutNulls
+            .toList()
+            .cast<OrderWarehouseRowStruct>();
+        FFAppState().customsApiOPJsonList = jsonBody.toList().cast<dynamic>();
+        FFAppState().update(() {});
+      }
     } else if (getCurrentRoute(context) == '/calendar') {
-      FFAppState().orderWarehouseAS = ((orderWarehouseApiOP.jsonBody ?? '')
-              .toList()
-              .map<OrderWarehouseRowStruct?>(
-                  OrderWarehouseRowStruct.maybeFromMap)
-              .toList() as Iterable<OrderWarehouseRowStruct?>)
-          .withoutNulls
-          .toList()
-          .cast<OrderWarehouseRowStruct>();
-      FFAppState().calendarApiOPJsonList =
-          (orderWarehouseApiOP.jsonBody ?? '').toList().cast<dynamic>();
-      FFAppState().update(() {});
+      final jsonBody = orderWarehouseApiOP.jsonBody;
+      if (jsonBody != null && jsonBody is List && jsonBody.isNotEmpty) {
+        FFAppState().orderWarehouseAS = ((jsonBody)
+                .toList()
+                .map<OrderWarehouseRowStruct?>(
+                    OrderWarehouseRowStruct.maybeFromMap)
+                .toList() as Iterable<OrderWarehouseRowStruct?>)
+            .withoutNulls
+            .toList()
+            .cast<OrderWarehouseRowStruct>();
+        FFAppState().calendarApiOPJsonList = jsonBody.toList().cast<dynamic>();
+        FFAppState().update(() {});
+      }
     } else if (getCurrentRoute(context) == '/reports') {
-      FFAppState().orderWarehouseAS = ((orderWarehouseApiOP.jsonBody ?? '')
-              .toList()
-              .map<OrderWarehouseRowStruct?>(
-                  OrderWarehouseRowStruct.maybeFromMap)
-              .toList() as Iterable<OrderWarehouseRowStruct?>)
-          .withoutNulls
-          .toList()
-          .cast<OrderWarehouseRowStruct>();
-      FFAppState().reportsApiOPJsonList =
-          (orderWarehouseApiOP.jsonBody ?? '').toList().cast<dynamic>();
-      FFAppState().update(() {});
+      final jsonBody = orderWarehouseApiOP.jsonBody;
+      if (jsonBody != null && jsonBody is List && jsonBody.isNotEmpty) {
+        FFAppState().orderWarehouseAS = ((jsonBody)
+                .toList()
+                .map<OrderWarehouseRowStruct?>(
+                    OrderWarehouseRowStruct.maybeFromMap)
+                .toList() as Iterable<OrderWarehouseRowStruct?>)
+            .withoutNulls
+            .toList()
+            .cast<OrderWarehouseRowStruct>();
+        FFAppState().reportsApiOPJsonList = jsonBody.toList().cast<dynamic>();
+        FFAppState().update(() {});
+      }
     }
   }
 }
