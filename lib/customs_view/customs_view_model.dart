@@ -3,6 +3,7 @@ import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/filters_pop_up_customs_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/pages/components/light_mode/light_mode_widget.dart';
 import '/pages/components/user_details/user_details_widget.dart';
 import '/index.dart';
@@ -50,6 +51,9 @@ class CustomsViewModel extends FlutterFlowModel<CustomsViewWidget> {
   ApiCallResponse? refreshRowOPCopy;
   // Model for filtersPopUp-Customs component.
   late FiltersPopUpCustomsModel filtersPopUpCustomsModel;
+  // State field(s) for stateGridDD widget (Grid State Dropdown).
+  String? stateGridDDValue;
+  FormFieldController<String>? stateGridDDValueController;
   // State field(s) for onlineSW widget.
   bool? onlineSWValue;
   // State field(s) for rowsQuantityTF widget.

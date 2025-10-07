@@ -124,17 +124,13 @@ Future getOrderWarehouseTable() async {
                 (e) => Map<String, dynamic>.from(e as Map))
             .toList();
 
-        // Dedup por firma
-        final seen = <String, bool>{};
-        final dedup = <Map<String, dynamic>>[];
+        // NO hacer dedup aquí - los datos vienen de la DB y deben respetarse
+        // La deduplicación solo debe ocurrir en el momento de GUARDAR (en PlutoGrid)
+        final normalized = <Map<String, dynamic>>[];
         for (final s in rawStates) {
           final payload = Map<String, dynamic>.from(
               s['payload'] ?? const <String, dynamic>{});
-          final sig = _payloadSig(payload);
-          if (sig.isEmpty) continue;
-          if (seen[sig] == true) continue;
-          seen[sig] = true;
-          dedup.add({
+          normalized.add({
             'name': s['name']?.toString(),
             'updatedAt': s['updatedAt']?.toString(),
             'payload': {
@@ -147,7 +143,7 @@ Future getOrderWarehouseTable() async {
         }
 
         // Máx 3 y reasignar ids
-        final capped = dedup.take(3).toList();
+        final capped = normalized.take(3).toList();
         for (var i = 0; i < capped.length; i++) {
           capped[i] = {
             'id': '$view-$i',

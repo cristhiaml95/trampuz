@@ -4,10 +4,12 @@ import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/filters_pop_up_customs_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_language_selector.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/form_field_controller.dart';
 import '/pages/components/light_mode/light_mode_widget.dart';
 import '/pages/components/user_details/user_details_widget.dart';
 import '/pages/floating/associate_query/associate_query_widget.dart';
@@ -1806,6 +1808,135 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                           ),
                                         ],
                                       ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 8.0, 0.0, 0.0),
+                                    child: FlutterFlowDropDown<String>(
+                                      controller:
+                                          _model.stateGridDDValueController ??=
+                                              FormFieldController<String>(
+                                        _model.stateGridDDValue ??= () {
+                                          // Obtener activeId de la vista customs
+                                          try {
+                                            final plutogrid =
+                                                FFAppState().plutogridTableInfo;
+                                            if (plutogrid.isNotEmpty) {
+                                              final viewEntry =
+                                                  plutogrid.firstWhere(
+                                                (e) =>
+                                                    e is Map &&
+                                                    e['view'] == 'customs',
+                                                orElse: () =>
+                                                    <String, dynamic>{},
+                                              );
+                                              if (viewEntry is Map &&
+                                                  viewEntry.containsKey(
+                                                      'activeId')) {
+                                                return viewEntry['activeId']
+                                                        ?.toString() ??
+                                                    '';
+                                              }
+                                            }
+                                          } catch (e) {
+                                            debugPrint(
+                                                'Error getting activeId: $e');
+                                          }
+                                          return '';
+                                        }(),
+                                      ),
+                                      options: () {
+                                        final result = List<String>.from(
+                                            functions.getListFromJsonPath(
+                                                    FFAppState()
+                                                        .plutogridTableInfo
+                                                        .toList(),
+                                                    '\$[?(@.view==\"customs\")].states[*].id') ??
+                                                []);
+                                        debugPrint(
+                                            '🔍 Dropdown options (IDs): $result');
+                                        debugPrint(
+                                            '📊 plutogridTableInfo: ${FFAppState().plutogridTableInfo}');
+                                        return result;
+                                      }(),
+                                      optionLabels: functions.getListFromJsonPath(
+                                              FFAppState()
+                                                  .plutogridTableInfo
+                                                  .toList(),
+                                              '\$[?(@.view==\"customs\")].states[*].name') ??
+                                          [],
+                                      onChanged: (val) async {
+                                        safeSetState(() =>
+                                            _model.stateGridDDValue = val);
+
+                                        // Guardar en Supabase: MERGE con otros views
+                                        final currentTable = List<dynamic>.from(
+                                            FFAppState().plutogridTableInfo);
+
+                                        // Buscar índice de customs
+                                        final customsIndex =
+                                            currentTable.indexWhere((e) =>
+                                                e is Map &&
+                                                e['view'] == 'customs');
+
+                                        if (customsIndex >= 0) {
+                                          // Actualizar activeId solo en customs
+                                          currentTable[customsIndex] = {
+                                            ...currentTable[customsIndex]
+                                                as Map,
+                                            'activeId': _model.stateGridDDValue,
+                                          };
+
+                                          // Actualizar AppState
+                                          FFAppState().plutogridTableInfo =
+                                              currentTable;
+
+                                          // Guardar en Supabase
+                                          await UsersTable().update(
+                                            data: {
+                                              'grid_state_list': currentTable,
+                                            },
+                                            matchingRows: (rows) =>
+                                                rows.eqOrNull(
+                                              'id',
+                                              currentUserUid,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      width: 240.0,
+                                      height: 36.0,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            fontSize: 13.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'custom_profiles' /* Select Profile */,
+                                      ),
+                                      icon: Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      elevation: 2.0,
+                                      borderColor:
+                                          FlutterFlowTheme.of(context).accent4,
+                                      borderWidth: 0.0,
+                                      borderRadius: 8.0,
+                                      margin: EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 12.0, 0.0),
+                                      hidesUnderline: true,
+                                      isOverButton: false,
+                                      isSearchable: false,
+                                      isMultiSelect: false,
                                     ),
                                   ),
                                   Align(

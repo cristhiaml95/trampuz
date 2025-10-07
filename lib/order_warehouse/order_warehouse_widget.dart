@@ -1535,30 +1535,58 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                             controller: _model
                                                     .stateGridDDValueController ??=
                                                 FormFieldController<String>(
-                                              _model.stateGridDDValue ??= '',
+                                              _model.stateGridDDValue ??= () {
+                                                // Obtener activeId de la vista orderWarehouse
+                                                try {
+                                                  final plutogrid = FFAppState()
+                                                      .plutogridTableInfo;
+                                                  if (plutogrid.isNotEmpty) {
+                                                    final viewEntry =
+                                                        plutogrid.firstWhere(
+                                                      (e) =>
+                                                          e is Map &&
+                                                          e['view'] ==
+                                                              'orderWarehouse',
+                                                      orElse: () =>
+                                                          <String, dynamic>{},
+                                                    );
+                                                    if (viewEntry is Map &&
+                                                        viewEntry.containsKey(
+                                                            'activeId')) {
+                                                      return viewEntry[
+                                                                  'activeId']
+                                                              ?.toString() ??
+                                                          '';
+                                                    }
+                                                  }
+                                                } catch (e) {
+                                                  debugPrint(
+                                                      'Error getting activeId: $e');
+                                                }
+                                                return '';
+                                              }(),
                                             ),
-                                            options: List<String>.from(
-                                                functions.getListFromJsonPath(
-                                                    orderWarehouseUsersRowList
-                                                        .where((e) =>
-                                                            e.id ==
-                                                            currentUserUid)
-                                                        .toList()
-                                                        .firstOrNull
-                                                        ?.gridStateList
-                                                        .toList(),
-                                                    '\$[?(@.view==\"orderWarehouse\")].states[*].id')!),
+                                            options: () {
+                                              final result = List<String>.from(
+                                                  functions.getListFromJsonPath(
+                                                          FFAppState()
+                                                              .plutogridTableInfo
+                                                              .toList(),
+                                                          '\$[?(@.view==\"orderWarehouse\")].states[*].id') ??
+                                                      []);
+                                              debugPrint(
+                                                  '🔍 Dropdown options (IDs): $result');
+                                              debugPrint(
+                                                  '📊 plutogridTableInfo: ${FFAppState().plutogridTableInfo}');
+                                              return result;
+                                            }(),
                                             optionLabels:
                                                 functions.getListFromJsonPath(
-                                                    orderWarehouseUsersRowList
-                                                        .where((e) =>
-                                                            e.id ==
-                                                            currentUserUid)
-                                                        .toList()
-                                                        .firstOrNull
-                                                        ?.gridStateList
-                                                        .toList(),
-                                                    '\$[?(@.view==\"orderWarehouse\")].states[*].name')!,
+                                                        FFAppState()
+                                                            .plutogridTableInfo
+                                                            .toList(),
+                                                        '\$[?(@.view==\"orderWarehouse\")].states[*].name') ??
+                                                    [],
                                             onChanged: (val) async {
                                               safeSetState(() => _model
                                                   .stateGridDDValue = val);
@@ -1573,7 +1601,70 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                                   _model.updateGrid!
                                                       .toList()
                                                       .cast<dynamic>();
-                                              safeSetState(() {});
+
+                                              // Leer grid_state_list actual de la DB antes de guardar
+                                              final userRow =
+                                                  await UsersTable().queryRows(
+                                                queryFn: (q) => q.eqOrNull(
+                                                  'id',
+                                                  currentUserUid,
+                                                ),
+                                              );
+
+                                              List<dynamic> dbGridStateList =
+                                                  [];
+                                              if (userRow.isNotEmpty) {
+                                                final raw =
+                                                    userRow.first.gridStateList;
+                                                dbGridStateList =
+                                                    List<dynamic>.from(raw);
+                                              }
+
+                                              // Mergear: reemplazar solo la vista orderWarehouse
+                                              final currentViewData =
+                                                  FFAppState()
+                                                      .plutogridTableInfo
+                                                      .firstWhere(
+                                                        (e) =>
+                                                            e is Map &&
+                                                            e['view'] ==
+                                                                'orderWarehouse',
+                                                        orElse: () =>
+                                                            <String, dynamic>{},
+                                                      );
+
+                                              if (currentViewData is Map &&
+                                                  currentViewData.isNotEmpty) {
+                                                final idx = dbGridStateList
+                                                    .indexWhere((e) =>
+                                                        e is Map &&
+                                                        e['view'] ==
+                                                            'orderWarehouse');
+
+                                                if (idx >= 0) {
+                                                  dbGridStateList[idx] =
+                                                      currentViewData;
+                                                } else {
+                                                  dbGridStateList
+                                                      .add(currentViewData);
+                                                }
+                                              }
+
+                                              // Persistir merged list a DB
+                                              await UsersTable().update(
+                                                data: {
+                                                  'grid_state_list':
+                                                      dbGridStateList,
+                                                  'current_grid_set':
+                                                      FFAppState()
+                                                          .currentGridSet,
+                                                },
+                                                matchingRows: (rows) =>
+                                                    rows.eqOrNull(
+                                                  'id',
+                                                  currentUserUid,
+                                                ),
+                                              );
 
                                               safeSetState(() {});
                                             },
@@ -2908,11 +2999,62 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                                 }
                                               },
                                               gridStateAction: () async {
+                                                // Leer grid_state_list actual de la DB
+                                                final userRow =
+                                                    await UsersTable()
+                                                        .queryRows(
+                                                  queryFn: (q) => q.eqOrNull(
+                                                    'id',
+                                                    currentUserUid,
+                                                  ),
+                                                );
+
+                                                List<dynamic> dbGridStateList =
+                                                    [];
+                                                if (userRow.isNotEmpty) {
+                                                  final raw = userRow
+                                                      .first.gridStateList;
+                                                  dbGridStateList =
+                                                      List<dynamic>.from(raw);
+                                                }
+
+                                                // Mergear: reemplazar solo la vista orderWarehouse
+                                                final currentViewData =
+                                                    FFAppState()
+                                                        .plutogridTableInfo
+                                                        .firstWhere(
+                                                          (e) =>
+                                                              e is Map &&
+                                                              e['view'] ==
+                                                                  'orderWarehouse',
+                                                          orElse: () => <String,
+                                                              dynamic>{},
+                                                        );
+
+                                                if (currentViewData is Map &&
+                                                    currentViewData
+                                                        .isNotEmpty) {
+                                                  // Buscar índice en dbGridStateList
+                                                  final idx = dbGridStateList
+                                                      .indexWhere((e) =>
+                                                          e is Map &&
+                                                          e['view'] ==
+                                                              'orderWarehouse');
+
+                                                  if (idx >= 0) {
+                                                    dbGridStateList[idx] =
+                                                        currentViewData;
+                                                  } else {
+                                                    dbGridStateList
+                                                        .add(currentViewData);
+                                                  }
+                                                }
+
+                                                // Guardar merged list
                                                 await UsersTable().update(
                                                   data: {
                                                     'grid_state_list':
-                                                        FFAppState()
-                                                            .plutogridTableInfo,
+                                                        dbGridStateList,
                                                     'current_grid_set':
                                                         FFAppState()
                                                             .currentGridSet,

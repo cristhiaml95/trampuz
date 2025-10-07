@@ -94,6 +94,8 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
   PlutoCell? _lastCell;
   bool _layoutRestored = false;
   bool _isRestoring = false;
+  bool _isResetting =
+      false; // Nueva bandera para evitar restauración tras reset
 
   /// Firma inmutable de filteredColumns para detectar cambios aunque se mute la misma lista
   late String _filteredSig;
@@ -345,6 +347,11 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     final columnsSigChanged = _columnsSig != newColumnsSig;
     _columnsSig = newColumnsSig;
 
+    // NUEVO: Detectar cambio en activeId de plutogridTableInfo
+    final currentLayout = _cachedLayout();
+    final currentLayoutSig = _computePayloadSignature(currentLayout);
+    final layoutChanged = currentLayoutSig != _lastAppliedLayoutSig;
+
     if (languageChanged || columnsRefChanged || columnsSigChanged) {
       _language = widget.language;
       _enforceSingleFilter();
@@ -367,6 +374,13 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
         _layoutRestored = false;
         _restoreLayout();
       });
+    }
+
+    // NUEVO: Si cambió el layout (activeId diferente), restaurar
+    // PERO solo si NO estamos en medio de un reset
+    if (layoutChanged && _gridLoaded && !_isResetting) {
+      _layoutRestored = false;
+      WidgetsBinding.instance.addPostFrameCallback((_) => _restoreLayout());
     }
 
     if (!_layoutRestored && _columns.isNotEmpty) {
@@ -598,22 +612,46 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
 
   /* ------------ Reset grid ------------ */
   void _resetGrid() {
-    FFAppState().update(() {
-      final list = List<dynamic>.from(FFAppState().plutogridTableInfo ?? []);
-      list.removeWhere((e) => e is Map && e['view'] == widget.viewName);
-      FFAppState().plutogridTableInfo = list;
-
-      final cg = List<dynamic>.from(FFAppState().currentGridSet ?? []);
-      cg.removeWhere((e) => e is Map && e['view'] == widget.viewName);
-      FFAppState().currentGridSet = cg;
-    });
+    // Solo resetear visualmente al estado por defecto (columns del widget)
+    // NO eliminar de plutogridTableInfo ni currentGridSet
+    // El usuario puede guardar después si quiere sobrescribir un perfil
+    _isResetting = true; // Activar bandera para evitar restauración automática
 
     setState(() {
       _columns = _buildColumns(widget.data);
-      _layoutRestored = false;
+      _layoutRestored = true; // Marcar como restaurado para evitar auto-restore
       _gridVersion++;
-      _lastAppliedLayoutSig = '';
     });
+
+    // Después de rebuild, actualizar signature para coincidir con layout actual
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!mounted || !_gridLoaded) {
+        _isResetting = false;
+        return;
+      }
+      // Actualizar signature para que didUpdateWidget no detecte cambio
+      final currentLayout = _cachedLayout();
+      _lastAppliedLayoutSig = _computePayloadSignature(currentLayout);
+      _isResetting = false;
+    });
+
+    // Mostrar snackbar informativo
+    final snackTxt = {
+          'es': 'Vista reseteada a configuración por defecto',
+          'en': 'View reset to default configuration',
+          'sl': 'Pogled resetovan na privzeto konfiguracijo',
+        }[_language] ??
+        'View reset to default';
+
+    final messenger = ScaffoldMessenger.maybeOf(context);
+    if (mounted && messenger != null) {
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(snackTxt),
+          duration: const Duration(milliseconds: 1200),
+        ),
+      );
+    }
   }
 
   /* ------------- filtros ------------- */
@@ -1590,6 +1628,8 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
 
     final layout = _cachedLayout();
     final vis = List<String>.from(layout['visible'] ?? []);
+    final hid =
+        List<String>.from(layout['hidden'] ?? []); // NUEVO: agregar hidden
 
     // Conversión segura de widths -> Map<String,double>
     final savedWidths = <String, double>{};
@@ -1602,12 +1642,21 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
 
     _isRestoring = true;
 
-    for (var i = vis.length - 1; i >= 0; i--) {
-      final col = _findColumn(vis[i]);
-      final targetList = _stateManager.refColumns.originalList;
-      if (col != null && targetList.isNotEmpty) {
-        _stateManager.moveColumn(column: col, targetColumn: targetList.first);
-        if (col.hide) _stateManager.hideColumn(col, false);
+    // Nota: La restauración del orden de columnas tiene limitaciones en PlutoGrid
+    // Por ahora solo restauramos visibilidad y anchos que son más importantes
+    // El orden se guarda en el payload pero no se restaura automáticamente
+
+    // Aplicar visibilidad
+    for (final field in vis) {
+      final col = _findColumn(field);
+      if (col != null && col.hide) {
+        _stateManager.hideColumn(col, false);
+      }
+    }
+    for (final field in hid) {
+      final col = _findColumn(field);
+      if (col != null && !col.hide) {
+        _stateManager.hideColumn(col, true);
       }
     }
 
@@ -1634,11 +1683,13 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     final visibles = cols.where((c) => !c.hide).map((c) => c.field).toList();
     final hiddens = cols.where((c) => c.hide).map((c) => c.field).toList();
     final widths = {for (final c in cols) c.field: c.width};
+    final order = cols.map((c) => c.field).toList(); // NUEVO: guardar orden
 
     return {
       'visible': visibles,
       'hidden': hiddens,
       'widths': widths,
+      'order': order, // NUEVO: incluir orden de columnas
     };
   }
 
