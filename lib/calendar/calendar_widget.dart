@@ -301,9 +301,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.chartLine,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -321,9 +319,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -352,6 +348,8 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                         width: double.infinity,
                                         height: 44.0,
                                         decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           shape: BoxShape.rectangle,
@@ -365,9 +363,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.boxesStacked,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -385,9 +381,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -416,6 +410,8 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                         width: double.infinity,
                                         height: 44.0,
                                         decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           shape: BoxShape.rectangle,
@@ -429,9 +425,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.warehouse,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -449,9 +443,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -495,7 +487,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                                 FontAwesomeIcons.calendarDays,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                        .primaryText,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -520,7 +512,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                                                     'Roboto',
                                                                 color: FlutterFlowTheme.of(
                                                                         context)
-                                                                    .secondaryBackground,
+                                                                    .primaryText,
                                                                 letterSpacing:
                                                                     0.0,
                                                               ),
@@ -566,9 +558,7 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.stamp,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -584,19 +574,15 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                                           .getText(
                                                         'dc1jvfjh' /* Customs */,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            color: Colors.white,
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ),
@@ -1443,61 +1429,43 @@ class _CalendarWidgetState extends State<CalendarWidget>
                                   ),
                                 ),
                               ),
-                              SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Flexible(
-                                      child: Stack(
-                                        alignment:
-                                            AlignmentDirectional(0.0, 0.0),
-                                        children: [
-                                          Builder(
-                                            builder: (context) => Container(
-                                              width: FFAppState().navOpen ==
-                                                      true
-                                                  ? (MediaQuery.sizeOf(context)
-                                                          .width -
-                                                      270)
-                                                  : (MediaQuery.sizeOf(context)
-                                                          .width -
-                                                      72),
-                                              height: valueOrDefault<double>(
-                                                MediaQuery.sizeOf(context)
-                                                        .height -
-                                                    351,
-                                                200.0,
-                                              ),
-                                              child: custom_widgets
-                                                  .PlutoGridorderwarehouse(
-                                                width:
-                                                    FFAppState().navOpen == true
-                                                        ? (MediaQuery.sizeOf(
-                                                                    context)
-                                                                .width -
-                                                            270)
-                                                        : (MediaQuery.sizeOf(
-                                                                    context)
-                                                                .width -
-                                                            72),
-                                                height: valueOrDefault<double>(
-                                                  MediaQuery.sizeOf(context)
-                                                          .height -
-                                                      351,
-                                                  200.0,
-                                                ),
-                                                data: FFAppState()
-                                                    .calendarApiOPJsonList,
-                                                defaultColumnWidth: 200.0,
-                                                language:
-                                                    valueOrDefault<String>(
-                                                  FFLocalizations.of(context)
-                                                      .languageCode,
-                                                  'es',
-                                                ),
-                                                columns:
-                                                    functions.stringToJson('''[
+                              Stack(
+                                alignment: AlignmentDirectional(0.0, 0.0),
+                                children: [
+                                  Builder(
+                                    builder: (context) => Container(
+                                      width: FFAppState().navOpen == true
+                                          ? (MediaQuery.sizeOf(context).width -
+                                              270)
+                                          : (MediaQuery.sizeOf(context).width -
+                                              72),
+                                      height: valueOrDefault<double>(
+                                        MediaQuery.sizeOf(context).height - 351,
+                                        200.0,
+                                      ),
+                                      child: custom_widgets
+                                          .PlutoGridorderwarehouse(
+                                        width: FFAppState().navOpen == true
+                                            ? (MediaQuery.sizeOf(context)
+                                                    .width -
+                                                270)
+                                            : (MediaQuery.sizeOf(context)
+                                                    .width -
+                                                72),
+                                        height: valueOrDefault<double>(
+                                          MediaQuery.sizeOf(context).height -
+                                              351,
+                                          200.0,
+                                        ),
+                                        data:
+                                            FFAppState().calendarApiOPJsonList,
+                                        defaultColumnWidth: 200.0,
+                                        language: valueOrDefault<String>(
+                                          FFLocalizations.of(context)
+                                              .languageCode,
+                                          'es',
+                                        ),
+                                        columns: functions.stringToJson('''[
   {
     "column_name": "edit",
     "ui_en": "Edit",
@@ -1636,717 +1604,678 @@ class _CalendarWidgetState extends State<CalendarWidget>
 ]
 
 '''),
-                                                viewName: 'calendar',
-                                                filteredColumns: FFAppState()
-                                                    .calendarFilterColumns,
-                                                editAction: () async {
-                                                  FFAppState()
-                                                      .goodDescriptionList = [];
-                                                  FFAppState().clientList = [];
-                                                  safeSetState(() {});
-                                                  FFAppState().clientApiB =
-                                                      false;
-                                                  FFAppState().clientApiId =
-                                                      FFAppState()
-                                                          .tablesRow
-                                                          .orderNo;
-                                                  FFAppState()
-                                                          .goodDescriptionApiId =
-                                                      FFAppState()
-                                                          .tablesRow
-                                                          .goodDescription;
-                                                  FFAppState()
-                                                          .goodDescriptionApiV =
-                                                      FFAppState()
-                                                          .tablesRow
-                                                          .opisBlaga;
-                                                  FFAppState().clientApiV =
-                                                      FFAppState()
-                                                          .tablesRow
-                                                          .clientName;
-                                                  FFAppState()
-                                                      .addToGoodDescriptionList(
-                                                          GoodDescriptionRowStruct(
-                                                    id: FFAppState()
-                                                        .tablesRow
-                                                        .goodDescription,
-                                                    opisBlaga: FFAppState()
-                                                        .tablesRow
-                                                        .opisBlaga,
-                                                  ));
-                                                  FFAppState().addToClientList(
-                                                      ClientRowStruct(
-                                                    id: FFAppState()
-                                                        .tablesRow
-                                                        .client,
-                                                    client: FFAppState()
-                                                        .tablesRow
-                                                        .clientName,
-                                                  ));
-                                                  safeSetState(() {});
+                                        viewName: 'calendar',
+                                        filteredColumns:
+                                            FFAppState().calendarFilterColumns,
+                                        editAction: () async {
+                                          FFAppState().goodDescriptionList = [];
+                                          FFAppState().clientList = [];
+                                          safeSetState(() {});
+                                          FFAppState().clientApiB = false;
+                                          FFAppState().clientApiId =
+                                              FFAppState().tablesRow.orderNo;
+                                          FFAppState().goodDescriptionApiId =
+                                              FFAppState()
+                                                  .tablesRow
+                                                  .goodDescription;
+                                          FFAppState().goodDescriptionApiV =
+                                              FFAppState().tablesRow.opisBlaga;
+                                          FFAppState().clientApiV =
+                                              FFAppState().tablesRow.clientName;
+                                          FFAppState().addToGoodDescriptionList(
+                                              GoodDescriptionRowStruct(
+                                            id: FFAppState()
+                                                .tablesRow
+                                                .goodDescription,
+                                            opisBlaga: FFAppState()
+                                                .tablesRow
+                                                .opisBlaga,
+                                          ));
+                                          FFAppState()
+                                              .addToClientList(ClientRowStruct(
+                                            id: FFAppState().tablesRow.client,
+                                            client: FFAppState()
+                                                .tablesRow
+                                                .clientName,
+                                          ));
+                                          safeSetState(() {});
 
-                                                  context.pushNamed(
-                                                    EditFormWidget.routeName,
-                                                    queryParameters: {
-                                                      'orderJson':
-                                                          serializeParam(
-                                                        FFAppState().tablesRow,
-                                                        ParamType.DataStruct,
-                                                      ),
-                                                      'viewFrom':
-                                                          serializeParam(
-                                                        getCurrentRoute(
-                                                            context),
-                                                        ParamType.String,
-                                                      ),
-                                                    }.withoutNulls,
-                                                  );
-                                                },
-                                                copyAction: () async {
-                                                  if ((FFAppState()
-                                                              .tablesRow
-                                                              .flow ==
-                                                          'out') &&
-                                                      (FFAppState()
-                                                              .tablesRow
-                                                              .associatedOrder ==
-                                                          '0e0c37f1-96bc-4cc2-a3f6-094e5e8f059b')) {
-                                                    ScaffoldMessenger.of(
-                                                            context)
-                                                        .showSnackBar(
-                                                      SnackBar(
-                                                        content: Text(
-                                                          'This OUT order has no associated order.',
-                                                          style: TextStyle(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryText,
-                                                          ),
-                                                        ),
-                                                        duration: Duration(
-                                                            milliseconds: 4000),
-                                                        backgroundColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondary,
-                                                      ),
-                                                    );
-                                                  } else {
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder: (dialogContext) {
-                                                        return Dialog(
-                                                          elevation: 0,
-                                                          insetPadding:
-                                                              EdgeInsets.zero,
-                                                          backgroundColor:
-                                                              Colors
-                                                                  .transparent,
-                                                          alignment: AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () {
-                                                              FocusScope.of(
-                                                                      dialogContext)
-                                                                  .unfocus();
-                                                              FocusManager
-                                                                  .instance
-                                                                  .primaryFocus
-                                                                  ?.unfocus();
-                                                            },
-                                                            child:
-                                                                AssociateQueryWidget(
-                                                              yesP: () async {
-                                                                _model.insertedRowOP =
-                                                                    await OrderLevelTable()
-                                                                        .insert({
-                                                                  'order_no':
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                    FFAppState()
-                                                                        .tablesRow
-                                                                        .orderNo
-                                                                        .substring(
-                                                                            0,
-                                                                            FFAppState().tablesRow.orderNo.length -
-                                                                                3),
-                                                                    '/',
-                                                                  ),
-                                                                  'quantity': 1,
-                                                                  'pallet_position':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .palletPosition,
-                                                                  'unit': FFAppState()
-                                                                      .tablesRow
-                                                                      .details,
-                                                                  'weight': FFAppState()
-                                                                      .tablesRow
-                                                                      .weight,
-                                                                  'good': FFAppState()
-                                                                      .tablesRow
-                                                                      .good,
-                                                                  'good_description':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .goodDescription,
-                                                                  'packaging':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .packaging,
-                                                                  'barcodes':
-                                                                      FFAppState()
-                                                                          .emptyList,
-                                                                  'no_barcodes':
-                                                                      FFAppState()
-                                                                          .emptyList,
-                                                                  'received_barcodes':
-                                                                      FFAppState()
-                                                                          .emptyList,
-                                                                  'repeated_barcodes':
-                                                                      FFAppState()
-                                                                          .emptyList,
-                                                                  'container_no':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .containerNo,
-                                                                  'client': FFAppState()
-                                                                      .tablesRow
-                                                                      .client,
-                                                                  'inv_status':
-                                                                      'najava',
-                                                                  'order_status':
-                                                                      'novo naročilo',
-                                                                  'admin':
-                                                                      currentUserUid,
-                                                                  'warehouse':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .warehouse,
-                                                                  'fms_ref':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .fmsRef,
-                                                                  'load_ref_dvh':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .loadRefDvh,
-                                                                  'universal_ref_no':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .universalRefNo,
-                                                                  'documents':
-                                                                      FFAppState()
-                                                                          .emptyList,
-                                                                  'flow': 'out',
-                                                                  'eta_i': supaSerialize<
-                                                                          PostgresTime>(
-                                                                      PostgresTime(
-                                                                          functions
-                                                                              .stringToDateTime('00:00'))),
-                                                                  'eta_f': supaSerialize<
-                                                                          PostgresTime>(
-                                                                      PostgresTime(
-                                                                          functions
-                                                                              .stringToDateTime('00:00'))),
-                                                                  'arrival': supaSerialize<
-                                                                          PostgresTime>(
-                                                                      PostgresTime(
-                                                                          functions
-                                                                              .stringToDateTime('00:00'))),
-                                                                  'start': supaSerialize<
-                                                                          PostgresTime>(
-                                                                      PostgresTime(
-                                                                          functions
-                                                                              .stringToDateTime('00:00'))),
-                                                                  'stop': supaSerialize<
-                                                                          PostgresTime>(
-                                                                      PostgresTime(
-                                                                          functions
-                                                                              .stringToDateTime('00:00'))),
-                                                                  'custom': FFAppState()
-                                                                      .tablesRow
-                                                                      .custom,
-                                                                  'associated_order':
-                                                                      () {
-                                                                    if (FFAppState()
-                                                                            .tablesRow
-                                                                            .flow ==
-                                                                        'in') {
-                                                                      return ((FFAppState().tablesRow.associatedOrder != '') &&
-                                                                              (FFAppState().tablesRow.associatedOrder !=
-                                                                                  '0e0c37f1-96bc-4cc2-a3f6-094e5e8f059b')
-                                                                          ? FFAppState()
-                                                                              .tablesRow
-                                                                              .associatedOrder
-                                                                          : FFAppState()
-                                                                              .tablesRow
-                                                                              .id);
-                                                                    } else if (FFAppState()
-                                                                            .tablesRow
-                                                                            .flow ==
-                                                                        'out') {
-                                                                      return FFAppState()
-                                                                          .tablesRow
-                                                                          .associatedOrder;
-                                                                    } else {
-                                                                      return '';
-                                                                    }
-                                                                  }(),
-                                                                  'taric_code':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .taricCode,
-                                                                  'customs_percentage':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .customsPercentage,
-                                                                  'euro_or_dolar':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .euroOrDolar,
-                                                                  'exchange_rate_used':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .exchangeRateUsed,
-                                                                  'init_cost':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .initCost,
-                                                                  'exchanged_cost':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .exchangedCost,
-                                                                  'value_per_unit':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .valuePerUnit,
-                                                                  'custom_percentage_per_cost':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .customPercentagePerCost,
-                                                                  'acumulated_customs_percentages':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .acumulatedCustomsPercentages,
-                                                                  'current_customs_warranty':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .currentCustomsWarranty,
-                                                                  'remaining_customs_threshold':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .remainingCustomsThreshold,
-                                                                  'dolars': 0.0,
-                                                                  'euros': 0.0,
-                                                                  'internal_ref_custom':
-                                                                      '',
-                                                                  'weight_balance':
-                                                                      0.0,
-                                                                  'group_consumed_threshold':
-                                                                      0.0,
-                                                                });
-                                                                _model.refreshRowOP =
-                                                                    await TablesGroup
-                                                                        .refreshOrderLevelCalculatedColumnsCall
-                                                                        .call(
-                                                                  rowId: _model
-                                                                      .insertedRowOP
-                                                                      ?.id,
-                                                                  userToken:
-                                                                      currentJwtToken,
-                                                                );
-
-                                                                if (!(_model
-                                                                        .refreshRowOP
-                                                                        ?.succeeded ??
-                                                                    true)) {
-                                                                  ScaffoldMessenger.of(
-                                                                          context)
-                                                                      .showSnackBar(
-                                                                    SnackBar(
-                                                                      content:
-                                                                          Text(
-                                                                        'Refresh row error.',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryBackground,
-                                                                          fontSize:
-                                                                              12.0,
-                                                                        ),
-                                                                      ),
-                                                                      duration: Duration(
-                                                                          milliseconds:
-                                                                              4000),
-                                                                      backgroundColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .secondary,
-                                                                    ),
-                                                                  );
-                                                                }
-                                                              },
-                                                              noP: () async {
-                                                                _model.insertedRow2OP =
-                                                                    await OrderLevelTable()
-                                                                        .insert({
-                                                                  'order_no':
-                                                                      valueOrDefault<
-                                                                          String>(
-                                                                    FFAppState()
-                                                                        .tablesRow
-                                                                        .orderNo
-                                                                        .substring(
-                                                                            0,
-                                                                            FFAppState().tablesRow.orderNo.length -
-                                                                                3),
-                                                                    '/',
-                                                                  ),
-                                                                  'quantity': 1,
-                                                                  'pallet_position':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .palletPosition,
-                                                                  'unit': FFAppState()
-                                                                      .tablesRow
-                                                                      .details,
-                                                                  'weight': FFAppState()
-                                                                      .tablesRow
-                                                                      .weight,
-                                                                  'good': FFAppState()
-                                                                      .tablesRow
-                                                                      .good,
-                                                                  'good_description':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .goodDescription,
-                                                                  'packaging':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .packaging,
-                                                                  'barcodes':
-                                                                      FFAppState()
-                                                                          .emptyList,
-                                                                  'no_barcodes':
-                                                                      FFAppState()
-                                                                          .emptyList,
-                                                                  'received_barcodes':
-                                                                      FFAppState()
-                                                                          .emptyList,
-                                                                  'repeated_barcodes':
-                                                                      FFAppState()
-                                                                          .emptyList,
-                                                                  'container_no':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .containerNo,
-                                                                  'client': FFAppState()
-                                                                      .tablesRow
-                                                                      .client,
-                                                                  'inv_status':
-                                                                      'najava',
-                                                                  'order_status':
-                                                                      'novo naročilo',
-                                                                  'admin':
-                                                                      currentUserUid,
-                                                                  'warehouse':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .warehouse,
-                                                                  'fms_ref':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .fmsRef,
-                                                                  'load_ref_dvh':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .loadRefDvh,
-                                                                  'universal_ref_no':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .universalRefNo,
-                                                                  'documents':
-                                                                      FFAppState()
-                                                                          .emptyList,
-                                                                  'flow': 'out',
-                                                                  'eta_i': supaSerialize<
-                                                                          PostgresTime>(
-                                                                      PostgresTime(
-                                                                          functions
-                                                                              .stringToDateTime('00:00'))),
-                                                                  'eta_f': supaSerialize<
-                                                                          PostgresTime>(
-                                                                      PostgresTime(
-                                                                          functions
-                                                                              .stringToDateTime('00:00'))),
-                                                                  'arrival': supaSerialize<
-                                                                          PostgresTime>(
-                                                                      PostgresTime(
-                                                                          functions
-                                                                              .stringToDateTime('00:00'))),
-                                                                  'start': supaSerialize<
-                                                                          PostgresTime>(
-                                                                      PostgresTime(
-                                                                          functions
-                                                                              .stringToDateTime('00:00'))),
-                                                                  'stop': supaSerialize<
-                                                                          PostgresTime>(
-                                                                      PostgresTime(
-                                                                          functions
-                                                                              .stringToDateTime('00:00'))),
-                                                                  'custom': FFAppState()
-                                                                      .tablesRow
-                                                                      .custom,
-                                                                  'associated_order':
-                                                                      '0e0c37f1-96bc-4cc2-a3f6-094e5e8f059b',
-                                                                  'taric_code':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .taricCode,
-                                                                  'customs_percentage':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .customsPercentage,
-                                                                  'euro_or_dolar':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .euroOrDolar,
-                                                                  'exchange_rate_used':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .exchangeRateUsed,
-                                                                  'init_cost':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .initCost,
-                                                                  'exchanged_cost':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .exchangedCost,
-                                                                  'value_per_unit':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .valuePerUnit,
-                                                                  'custom_percentage_per_cost':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .customPercentagePerCost,
-                                                                  'acumulated_customs_percentages':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .acumulatedCustomsPercentages,
-                                                                  'current_customs_warranty':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .currentCustomsWarranty,
-                                                                  'remaining_customs_threshold':
-                                                                      FFAppState()
-                                                                          .tablesRow
-                                                                          .remainingCustomsThreshold,
-                                                                  'dolars': 0.0,
-                                                                  'euros': 0.0,
-                                                                  'internal_ref_custom':
-                                                                      '',
-                                                                  'weight_balance':
-                                                                      0.0,
-                                                                  'group_consumed_threshold':
-                                                                      0.0,
-                                                                });
-                                                                _model.refreshRow2OP =
-                                                                    await TablesGroup
-                                                                        .refreshOrderLevelCalculatedColumnsCall
-                                                                        .call(
-                                                                  rowId: _model
-                                                                      .insertedRow2OP
-                                                                      ?.id,
-                                                                  userToken:
-                                                                      currentJwtToken,
-                                                                );
-
-                                                                if (!(_model
-                                                                        .refreshRow2OP
-                                                                        ?.succeeded ??
-                                                                    true)) {
-                                                                  ScaffoldMessenger.of(
-                                                                          context)
-                                                                      .showSnackBar(
-                                                                    SnackBar(
-                                                                      content:
-                                                                          Text(
-                                                                        'Refresh row error.',
-                                                                        style:
-                                                                            TextStyle(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryBackground,
-                                                                          fontSize:
-                                                                              12.0,
-                                                                        ),
-                                                                      ),
-                                                                      duration: Duration(
-                                                                          milliseconds:
-                                                                              4000),
-                                                                      backgroundColor:
-                                                                          FlutterFlowTheme.of(context)
-                                                                              .secondary,
-                                                                    ),
-                                                                  );
-                                                                }
-                                                              },
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    );
-                                                  }
-
-                                                  safeSetState(() {});
-                                                },
-                                                pdfAction: () async {
-                                                  await actions.getPDF(
-                                                    FFAppState()
-                                                        .tablesRow
-                                                        .toMap(),
-                                                  );
-                                                },
-                                                detailsAction: () async {
-                                                  FFAppState()
-                                                      .clearDetailsViewCache();
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder: (dialogContext) {
-                                                      return Dialog(
-                                                        elevation: 0,
-                                                        insetPadding:
-                                                            EdgeInsets.zero,
-                                                        backgroundColor:
-                                                            Colors.transparent,
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            FocusScope.of(
-                                                                    dialogContext)
-                                                                .unfocus();
-                                                            FocusManager
-                                                                .instance
-                                                                .primaryFocus
-                                                                ?.unfocus();
-                                                          },
-                                                          child: DetailsWidget(
-                                                            orderId:
-                                                                FFAppState()
-                                                                    .tablesRow
-                                                                    .id,
-                                                            orderNo:
-                                                                FFAppState()
-                                                                    .tablesRow
-                                                                    .orderNo,
-                                                            warehouseIdDetails:
-                                                                FFAppState()
-                                                                    .tablesRow
-                                                                    .warehouse,
-                                                            flow: FFAppState()
-                                                                .tablesRow
-                                                                .flow,
-                                                            associatedOrder:
-                                                                FFAppState()
-                                                                    .tablesRow
-                                                                    .associatedOrder,
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                                deleteAction: () async {},
-                                                cellSelectAction: () async {},
-                                                documentsAction: () async {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder: (dialogContext) {
-                                                      return Dialog(
-                                                        elevation: 0,
-                                                        insetPadding:
-                                                            EdgeInsets.zero,
-                                                        backgroundColor:
-                                                            Colors.transparent,
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
-                                                        child: GestureDetector(
-                                                          onTap: () {
-                                                            FocusScope.of(
-                                                                    dialogContext)
-                                                                .unfocus();
-                                                            FocusManager
-                                                                .instance
-                                                                .primaryFocus
-                                                                ?.unfocus();
-                                                          },
-                                                          child:
-                                                              DocumentsWidget(
-                                                            orderId:
-                                                                FFAppState()
-                                                                    .tablesRow
-                                                                    .id,
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                                filtersAction: () async {
-                                                  if (!FFAppState()
-                                                      .showFiltersPopUpCalendar) {
-                                                    FFAppState()
-                                                            .showFiltersPopUpCalendar =
-                                                        true;
-                                                    safeSetState(() {});
-                                                  }
-                                                },
-                                                gridStateAction: () async {
-                                                  await UsersTable().update(
-                                                    data: {
-                                                      'last_grid_state':
-                                                          FFAppState()
-                                                              .plutogridTableInfo,
-                                                    },
-                                                    matchingRows: (rows) =>
-                                                        rows.eqOrNull(
-                                                      'id',
-                                                      currentUserUid,
-                                                    ),
-                                                  );
-                                                },
+                                          context.pushNamed(
+                                            EditFormWidget.routeName,
+                                            queryParameters: {
+                                              'orderJson': serializeParam(
+                                                FFAppState().tablesRow,
+                                                ParamType.DataStruct,
                                               ),
+                                              'viewFrom': serializeParam(
+                                                getCurrentRoute(context),
+                                                ParamType.String,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        },
+                                        copyAction: () async {
+                                          if ((FFAppState().tablesRow.flow ==
+                                                  'out') &&
+                                              (FFAppState()
+                                                      .tablesRow
+                                                      .associatedOrder ==
+                                                  '0e0c37f1-96bc-4cc2-a3f6-094e5e8f059b')) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  'This OUT order has no associated order.',
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                              ),
+                                            );
+                                          } else {
+                                            await showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: GestureDetector(
+                                                    onTap: () {
+                                                      FocusScope.of(
+                                                              dialogContext)
+                                                          .unfocus();
+                                                      FocusManager
+                                                          .instance.primaryFocus
+                                                          ?.unfocus();
+                                                    },
+                                                    child: AssociateQueryWidget(
+                                                      yesP: () async {
+                                                        _model.insertedRowOP =
+                                                            await OrderLevelTable()
+                                                                .insert({
+                                                          'order_no':
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            FFAppState()
+                                                                .tablesRow
+                                                                .orderNo
+                                                                .substring(
+                                                                    0,
+                                                                    FFAppState()
+                                                                            .tablesRow
+                                                                            .orderNo
+                                                                            .length -
+                                                                        3),
+                                                            '/',
+                                                          ),
+                                                          'quantity': 1,
+                                                          'pallet_position':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .palletPosition,
+                                                          'unit': FFAppState()
+                                                              .tablesRow
+                                                              .details,
+                                                          'weight': FFAppState()
+                                                              .tablesRow
+                                                              .weight,
+                                                          'good': FFAppState()
+                                                              .tablesRow
+                                                              .good,
+                                                          'good_description':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .goodDescription,
+                                                          'packaging':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .packaging,
+                                                          'barcodes':
+                                                              FFAppState()
+                                                                  .emptyList,
+                                                          'no_barcodes':
+                                                              FFAppState()
+                                                                  .emptyList,
+                                                          'received_barcodes':
+                                                              FFAppState()
+                                                                  .emptyList,
+                                                          'repeated_barcodes':
+                                                              FFAppState()
+                                                                  .emptyList,
+                                                          'container_no':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .containerNo,
+                                                          'client': FFAppState()
+                                                              .tablesRow
+                                                              .client,
+                                                          'inv_status':
+                                                              'najava',
+                                                          'order_status':
+                                                              'novo naročilo',
+                                                          'admin':
+                                                              currentUserUid,
+                                                          'warehouse':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .warehouse,
+                                                          'fms_ref':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .fmsRef,
+                                                          'load_ref_dvh':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .loadRefDvh,
+                                                          'universal_ref_no':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .universalRefNo,
+                                                          'documents':
+                                                              FFAppState()
+                                                                  .emptyList,
+                                                          'flow': 'out',
+                                                          'eta_i': supaSerialize<
+                                                                  PostgresTime>(
+                                                              PostgresTime(functions
+                                                                  .stringToDateTime(
+                                                                      '00:00'))),
+                                                          'eta_f': supaSerialize<
+                                                                  PostgresTime>(
+                                                              PostgresTime(functions
+                                                                  .stringToDateTime(
+                                                                      '00:00'))),
+                                                          'arrival': supaSerialize<
+                                                                  PostgresTime>(
+                                                              PostgresTime(functions
+                                                                  .stringToDateTime(
+                                                                      '00:00'))),
+                                                          'start': supaSerialize<
+                                                                  PostgresTime>(
+                                                              PostgresTime(functions
+                                                                  .stringToDateTime(
+                                                                      '00:00'))),
+                                                          'stop': supaSerialize<
+                                                                  PostgresTime>(
+                                                              PostgresTime(functions
+                                                                  .stringToDateTime(
+                                                                      '00:00'))),
+                                                          'custom': FFAppState()
+                                                              .tablesRow
+                                                              .custom,
+                                                          'associated_order':
+                                                              () {
+                                                            if (FFAppState()
+                                                                    .tablesRow
+                                                                    .flow ==
+                                                                'in') {
+                                                              return ((FFAppState()
+                                                                              .tablesRow
+                                                                              .associatedOrder !=
+                                                                          '') &&
+                                                                      (FFAppState()
+                                                                              .tablesRow
+                                                                              .associatedOrder !=
+                                                                          '0e0c37f1-96bc-4cc2-a3f6-094e5e8f059b')
+                                                                  ? FFAppState()
+                                                                      .tablesRow
+                                                                      .associatedOrder
+                                                                  : FFAppState()
+                                                                      .tablesRow
+                                                                      .id);
+                                                            } else if (FFAppState()
+                                                                    .tablesRow
+                                                                    .flow ==
+                                                                'out') {
+                                                              return FFAppState()
+                                                                  .tablesRow
+                                                                  .associatedOrder;
+                                                            } else {
+                                                              return '';
+                                                            }
+                                                          }(),
+                                                          'taric_code':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .taricCode,
+                                                          'customs_percentage':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .customsPercentage,
+                                                          'euro_or_dolar':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .euroOrDolar,
+                                                          'exchange_rate_used':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .exchangeRateUsed,
+                                                          'init_cost':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .initCost,
+                                                          'exchanged_cost':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .exchangedCost,
+                                                          'value_per_unit':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .valuePerUnit,
+                                                          'custom_percentage_per_cost':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .customPercentagePerCost,
+                                                          'acumulated_customs_percentages':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .acumulatedCustomsPercentages,
+                                                          'current_customs_warranty':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .currentCustomsWarranty,
+                                                          'remaining_customs_threshold':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .remainingCustomsThreshold,
+                                                          'dolars': 0.0,
+                                                          'euros': 0.0,
+                                                          'internal_ref_custom':
+                                                              '',
+                                                          'weight_balance': 0.0,
+                                                          'group_consumed_threshold':
+                                                              0.0,
+                                                        });
+                                                        _model.refreshRowOP =
+                                                            await TablesGroup
+                                                                .refreshOrderLevelCalculatedColumnsCall
+                                                                .call(
+                                                          rowId: _model
+                                                              .insertedRowOP
+                                                              ?.id,
+                                                          userToken:
+                                                              currentJwtToken,
+                                                        );
+
+                                                        if (!(_model
+                                                                .refreshRowOP
+                                                                ?.succeeded ??
+                                                            true)) {
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
+                                                            SnackBar(
+                                                              content: Text(
+                                                                'Refresh row error.',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                                  fontSize:
+                                                                      12.0,
+                                                                ),
+                                                              ),
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      4000),
+                                                              backgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary,
+                                                            ),
+                                                          );
+                                                        }
+                                                      },
+                                                      noP: () async {
+                                                        _model.insertedRow2OP =
+                                                            await OrderLevelTable()
+                                                                .insert({
+                                                          'order_no':
+                                                              valueOrDefault<
+                                                                  String>(
+                                                            FFAppState()
+                                                                .tablesRow
+                                                                .orderNo
+                                                                .substring(
+                                                                    0,
+                                                                    FFAppState()
+                                                                            .tablesRow
+                                                                            .orderNo
+                                                                            .length -
+                                                                        3),
+                                                            '/',
+                                                          ),
+                                                          'quantity': 1,
+                                                          'pallet_position':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .palletPosition,
+                                                          'unit': FFAppState()
+                                                              .tablesRow
+                                                              .details,
+                                                          'weight': FFAppState()
+                                                              .tablesRow
+                                                              .weight,
+                                                          'good': FFAppState()
+                                                              .tablesRow
+                                                              .good,
+                                                          'good_description':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .goodDescription,
+                                                          'packaging':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .packaging,
+                                                          'barcodes':
+                                                              FFAppState()
+                                                                  .emptyList,
+                                                          'no_barcodes':
+                                                              FFAppState()
+                                                                  .emptyList,
+                                                          'received_barcodes':
+                                                              FFAppState()
+                                                                  .emptyList,
+                                                          'repeated_barcodes':
+                                                              FFAppState()
+                                                                  .emptyList,
+                                                          'container_no':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .containerNo,
+                                                          'client': FFAppState()
+                                                              .tablesRow
+                                                              .client,
+                                                          'inv_status':
+                                                              'najava',
+                                                          'order_status':
+                                                              'novo naročilo',
+                                                          'admin':
+                                                              currentUserUid,
+                                                          'warehouse':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .warehouse,
+                                                          'fms_ref':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .fmsRef,
+                                                          'load_ref_dvh':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .loadRefDvh,
+                                                          'universal_ref_no':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .universalRefNo,
+                                                          'documents':
+                                                              FFAppState()
+                                                                  .emptyList,
+                                                          'flow': 'out',
+                                                          'eta_i': supaSerialize<
+                                                                  PostgresTime>(
+                                                              PostgresTime(functions
+                                                                  .stringToDateTime(
+                                                                      '00:00'))),
+                                                          'eta_f': supaSerialize<
+                                                                  PostgresTime>(
+                                                              PostgresTime(functions
+                                                                  .stringToDateTime(
+                                                                      '00:00'))),
+                                                          'arrival': supaSerialize<
+                                                                  PostgresTime>(
+                                                              PostgresTime(functions
+                                                                  .stringToDateTime(
+                                                                      '00:00'))),
+                                                          'start': supaSerialize<
+                                                                  PostgresTime>(
+                                                              PostgresTime(functions
+                                                                  .stringToDateTime(
+                                                                      '00:00'))),
+                                                          'stop': supaSerialize<
+                                                                  PostgresTime>(
+                                                              PostgresTime(functions
+                                                                  .stringToDateTime(
+                                                                      '00:00'))),
+                                                          'custom': FFAppState()
+                                                              .tablesRow
+                                                              .custom,
+                                                          'associated_order':
+                                                              '0e0c37f1-96bc-4cc2-a3f6-094e5e8f059b',
+                                                          'taric_code':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .taricCode,
+                                                          'customs_percentage':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .customsPercentage,
+                                                          'euro_or_dolar':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .euroOrDolar,
+                                                          'exchange_rate_used':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .exchangeRateUsed,
+                                                          'init_cost':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .initCost,
+                                                          'exchanged_cost':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .exchangedCost,
+                                                          'value_per_unit':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .valuePerUnit,
+                                                          'custom_percentage_per_cost':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .customPercentagePerCost,
+                                                          'acumulated_customs_percentages':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .acumulatedCustomsPercentages,
+                                                          'current_customs_warranty':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .currentCustomsWarranty,
+                                                          'remaining_customs_threshold':
+                                                              FFAppState()
+                                                                  .tablesRow
+                                                                  .remainingCustomsThreshold,
+                                                          'dolars': 0.0,
+                                                          'euros': 0.0,
+                                                          'internal_ref_custom':
+                                                              '',
+                                                          'weight_balance': 0.0,
+                                                          'group_consumed_threshold':
+                                                              0.0,
+                                                        });
+                                                        _model.refreshRow2OP =
+                                                            await TablesGroup
+                                                                .refreshOrderLevelCalculatedColumnsCall
+                                                                .call(
+                                                          rowId: _model
+                                                              .insertedRow2OP
+                                                              ?.id,
+                                                          userToken:
+                                                              currentJwtToken,
+                                                        );
+
+                                                        if (!(_model
+                                                                .refreshRow2OP
+                                                                ?.succeeded ??
+                                                            true)) {
+                                                          ScaffoldMessenger.of(
+                                                                  context)
+                                                              .showSnackBar(
+                                                            SnackBar(
+                                                              content: Text(
+                                                                'Refresh row error.',
+                                                                style:
+                                                                    TextStyle(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryBackground,
+                                                                  fontSize:
+                                                                      12.0,
+                                                                ),
+                                                              ),
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      4000),
+                                                              backgroundColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondary,
+                                                            ),
+                                                          );
+                                                        }
+                                                      },
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            );
+                                          }
+
+                                          safeSetState(() {});
+                                        },
+                                        pdfAction: () async {
+                                          await actions.getPDF(
+                                            FFAppState().tablesRow.toMap(),
+                                          );
+                                        },
+                                        detailsAction: () async {
+                                          FFAppState().clearDetailsViewCache();
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    FocusScope.of(dialogContext)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
+                                                  },
+                                                  child: DetailsWidget(
+                                                    orderId: FFAppState()
+                                                        .tablesRow
+                                                        .id,
+                                                    orderNo: FFAppState()
+                                                        .tablesRow
+                                                        .orderNo,
+                                                    warehouseIdDetails:
+                                                        FFAppState()
+                                                            .tablesRow
+                                                            .warehouse,
+                                                    flow: FFAppState()
+                                                        .tablesRow
+                                                        .flow,
+                                                    associatedOrder:
+                                                        FFAppState()
+                                                            .tablesRow
+                                                            .associatedOrder,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                        deleteAction: () async {},
+                                        cellSelectAction: () async {},
+                                        documentsAction: () async {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: AlignmentDirectional(
+                                                        0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () {
+                                                    FocusScope.of(dialogContext)
+                                                        .unfocus();
+                                                    FocusManager
+                                                        .instance.primaryFocus
+                                                        ?.unfocus();
+                                                  },
+                                                  child: DocumentsWidget(
+                                                    orderId: FFAppState()
+                                                        .tablesRow
+                                                        .id,
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          );
+                                        },
+                                        filtersAction: () async {
+                                          if (!FFAppState()
+                                              .showFiltersPopUpCalendar) {
+                                            FFAppState()
+                                                    .showFiltersPopUpCalendar =
+                                                true;
+                                            safeSetState(() {});
+                                          }
+                                        },
+                                        gridStateAction: () async {
+                                          await UsersTable().update(
+                                            data: {
+                                              'last_grid_state': FFAppState()
+                                                  .plutogridTableInfo,
+                                            },
+                                            matchingRows: (rows) =>
+                                                rows.eqOrNull(
+                                              'id',
+                                              currentUserUid,
                                             ),
-                                          ),
-                                          if (FFAppState()
-                                              .showFiltersPopUpCalendar)
-                                            wrapWithModel(
-                                              model: _model
-                                                  .filtersPopUpCalendarModel,
-                                              updateCallback: () =>
-                                                  safeSetState(() {}),
-                                              child:
-                                                  FiltersPopUpCalendarWidget(),
-                                            ),
-                                        ],
+                                          );
+                                        },
                                       ),
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                  if (FFAppState().showFiltersPopUpCalendar)
+                                    wrapWithModel(
+                                      model: _model.filtersPopUpCalendarModel,
+                                      updateCallback: () => safeSetState(() {}),
+                                      child: FiltersPopUpCalendarWidget(),
+                                    ),
+                                ],
                               ),
                             ],
                           ),

@@ -305,9 +305,7 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.chartLine,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -325,9 +323,7 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -369,9 +365,7 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.boxesStacked,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -389,9 +383,7 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -435,9 +427,7 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.warehouse,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -455,9 +445,7 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -501,9 +489,7 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.calendarDays,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -519,19 +505,15 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                                           .getText(
                                                         'd6cn5hp1' /* Calendar */,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            color: Colors.white,
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ),
@@ -572,9 +554,7 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.stamp,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -592,9 +572,7 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -1965,7 +1943,7 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
                                   Container(
                                     width: double.infinity,
                                     height: valueOrDefault<double>(
-                                      MediaQuery.sizeOf(context).height - 200,
+                                      MediaQuery.sizeOf(context).height - 220,
                                       600.0,
                                     ),
                                     child: Stack(

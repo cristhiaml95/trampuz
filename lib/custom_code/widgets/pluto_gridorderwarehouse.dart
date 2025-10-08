@@ -639,7 +639,8 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
       messenger.showSnackBar(
         SnackBar(
           content: Text(snackTxt),
-          duration: const Duration(milliseconds: 800),
+          backgroundColor: Colors.green,
+          duration: const Duration(milliseconds: 1500),
         ),
       );
     }
@@ -837,30 +838,40 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     final bool isActive = _filteredSet.contains(f);
     return GestureDetector(
       onTap: () => _toggleFilter(f),
-      child: Padding(
-        padding: const EdgeInsets.only(right: 4),
-        child: Icon(
-          Icons.filter_list,
-          size: 14,
-          color: isActive ? Colors.green : Colors.grey.shade400,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: Padding(
+          padding: const EdgeInsets.only(right: 4),
+          child: Icon(
+            Icons.filter_list,
+            size: 14,
+            color: isActive ? Colors.green : Colors.grey.shade400,
+          ),
         ),
       ),
     );
   }
 
-  Widget _saveIcon() => GestureDetector(
-        onTap: () => _saveLayout(),
-        child: const Padding(
-          padding: EdgeInsets.only(right: 2),
-          child: Icon(Icons.save, size: 14, color: Colors.orange),
+  // 🎨 MEJORA: Hover effects en iconos con scale animation
+  Widget _saveIcon() => MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: () => _saveLayout(),
+          child: const Padding(
+            padding: EdgeInsets.only(right: 2),
+            child: Icon(Icons.save, size: 14, color: Colors.orange),
+          ),
         ),
       );
 
-  Widget _resetIcon() => GestureDetector(
-        onTap: _resetGrid,
-        child: const Padding(
-          padding: EdgeInsets.only(right: 2),
-          child: Icon(Icons.refresh, size: 14, color: Colors.red),
+  Widget _resetIcon() => MouseRegion(
+        cursor: SystemMouseCursors.click,
+        child: GestureDetector(
+          onTap: _resetGrid,
+          child: const Padding(
+            padding: EdgeInsets.only(right: 2),
+            child: Icon(Icons.refresh, size: 14, color: Colors.red),
+          ),
         ),
       );
 
@@ -1528,7 +1539,9 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     }
 
     if (_columns.isEmpty) {
-      return const Center(child: CircularProgressIndicator());
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
     }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {

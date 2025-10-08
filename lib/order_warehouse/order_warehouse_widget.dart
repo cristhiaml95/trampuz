@@ -324,9 +324,7 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -390,7 +388,7 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryBackground,
+                                                              .primaryText,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -452,9 +450,7 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -514,19 +510,15 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                                           .getText(
                                                         'kgotqw8e' /* Calendar */,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            color: Colors.white,
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ),
@@ -569,9 +561,7 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.stamp,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -587,19 +577,15 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                                           .getText(
                                                         '6hqs0t4w' /* Customs */,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            color: Colors.white,
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ),
@@ -629,7 +615,7 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                               fontFamily: 'Roboto',
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
+                                                      .primaryText,
                                               letterSpacing: 0.0,
                                             ),
                                       ),

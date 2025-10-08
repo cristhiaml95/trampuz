@@ -287,9 +287,7 @@ class _Warehouse2WidgetState extends State<Warehouse2Widget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.chartLine,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -307,6 +305,7 @@ class _Warehouse2WidgetState extends State<Warehouse2Widget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -335,6 +334,8 @@ class _Warehouse2WidgetState extends State<Warehouse2Widget>
                                         width: double.infinity,
                                         height: 44.0,
                                         decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .primary,
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           shape: BoxShape.rectangle,
@@ -348,9 +349,7 @@ class _Warehouse2WidgetState extends State<Warehouse2Widget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.boxesStacked,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -368,6 +367,7 @@ class _Warehouse2WidgetState extends State<Warehouse2Widget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -472,9 +472,7 @@ class _Warehouse2WidgetState extends State<Warehouse2Widget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.calendarDays,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -496,6 +494,7 @@ class _Warehouse2WidgetState extends State<Warehouse2Widget>
                                                           .override(
                                                             fontFamily:
                                                                 'Roboto',
+                                                            color: Colors.white,
                                                             letterSpacing: 0.0,
                                                           ),
                                                     ),
@@ -540,9 +539,7 @@ class _Warehouse2WidgetState extends State<Warehouse2Widget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.stamp,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -564,6 +561,7 @@ class _Warehouse2WidgetState extends State<Warehouse2Widget>
                                                           .override(
                                                             fontFamily:
                                                                 'Roboto',
+                                                            color: Colors.white,
                                                             letterSpacing: 0.0,
                                                           ),
                                                     ),

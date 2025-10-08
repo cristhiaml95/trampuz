@@ -313,7 +313,7 @@ class _ReportsWidgetState extends State<ReportsWidget>
                                                 FontAwesomeIcons.chartLine,
                                                 color:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                        .primaryText,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -333,7 +333,7 @@ class _ReportsWidgetState extends State<ReportsWidget>
                                                           fontFamily: 'Roboto',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .secondaryBackground,
+                                                              .primaryText,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -377,9 +377,7 @@ class _ReportsWidgetState extends State<ReportsWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.boxesStacked,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -397,9 +395,7 @@ class _ReportsWidgetState extends State<ReportsWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -443,9 +439,7 @@ class _ReportsWidgetState extends State<ReportsWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.warehouse,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -463,9 +457,7 @@ class _ReportsWidgetState extends State<ReportsWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
+                                                          color: Colors.white,
                                                           letterSpacing: 0.0,
                                                         ),
                                                   ),
@@ -509,9 +501,7 @@ class _ReportsWidgetState extends State<ReportsWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.calendarDays,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -527,19 +517,15 @@ class _ReportsWidgetState extends State<ReportsWidget>
                                                           .getText(
                                                         'wywtkc0i' /* Calendar */,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            color: Colors.white,
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ),
@@ -582,9 +568,7 @@ class _ReportsWidgetState extends State<ReportsWidget>
                                             children: [
                                               Icon(
                                                 FontAwesomeIcons.stamp,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: Colors.white,
                                                 size: 20.0,
                                               ),
                                               if (FFAppState().navOpen == true)
@@ -600,19 +584,15 @@ class _ReportsWidgetState extends State<ReportsWidget>
                                                           .getText(
                                                         'zucv118b' /* Customs */,
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            color: Colors.white,
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ),
