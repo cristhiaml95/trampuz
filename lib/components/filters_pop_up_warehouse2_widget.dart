@@ -77,6 +77,60 @@ class _FiltersPopUpWarehouse2WidgetState
     _model.barcodesTFTextController ??= TextEditingController();
     _model.barcodesTFFocusNode ??= FocusNode();
 
+    // Restaurar valores guardados de filtros
+    final saved = FFAppState().warehouse2FilterValues;
+    if (saved.isNotEmpty) {
+      _model.orderNoTFTextController?.text = saved['orderNoTF'] ?? '';
+      _model.licenceTFTextController?.text = saved['licenceTF'] ?? '';
+      _model.containerNoTFTextController?.text = saved['containerNoTF'] ?? '';
+      _model.palletPositionTFTextController?.text =
+          saved['palletPositionTF'] ?? '';
+      _model.universalRefNumTFTextController?.text =
+          saved['universalRefNumTF'] ?? '';
+      _model.fMSrefTFTextController?.text = saved['fMSrefTF'] ?? '';
+      _model.loadRefDvhTFTextController?.text = saved['loadRefDvhTF'] ?? '';
+      _model.intCustomTFTextController?.text = saved['intCustomTF'] ?? '';
+      _model.barcodesTFTextController?.text = saved['barcodesTF'] ?? '';
+      _model.datePicked1 = saved['datePicked1'];
+      _model.datePicked2 = saved['datePicked2'];
+
+      // Inicializar FormFieldControllers de dropdowns con valores guardados
+      _model.invStatusDDValueController =
+          FormFieldController<String>(saved['invStatusDD']);
+      _model.warehouseDDValueController =
+          FormFieldController<String>(saved['warehouseDD']);
+      _model.orderStatusDDValueController =
+          FormFieldController<String>(saved['orderStatusDD']);
+      _model.flowDDValueController =
+          FormFieldController<String>(saved['flowDD']);
+      _model.improvementDDValueController =
+          FormFieldController<String>(saved['improvementDD']);
+      _model.packagingDDValueController =
+          FormFieldController<String>(saved['packagingDD']);
+      _model.customDDValueController =
+          FormFieldController<String>(saved['customDD']);
+      _model.goodDDValueController =
+          FormFieldController<String>(saved['goodDD']);
+      _model.assistant1DDValueController =
+          FormFieldController<String>(saved['assistant1DD']);
+      _model.assistant2DDValueController =
+          FormFieldController<String>(saved['assistant2DD']);
+      _model.adminDDValueController =
+          FormFieldController<String>(saved['adminDD']);
+
+      // Restaurar valores de custom widgets
+      if (saved['clientApiB'] == true) {
+        FFAppState().clientApiB = saved['clientApiB'] ?? false;
+        FFAppState().clientApiId = saved['clientApiId'] ?? '';
+        FFAppState().clientApiV = saved['clientApiV'] ?? '';
+      }
+      if (saved['goodDescriptionApiB'] == true) {
+        FFAppState().goodDescriptionApiB =
+            saved['goodDescriptionApiB'] ?? false;
+        FFAppState().goodDescriptionApiId = saved['goodDescriptionApiId'] ?? '';
+      }
+    }
+
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -2548,6 +2602,8 @@ class _FiltersPopUpWarehouse2WidgetState
                         });
                         FFAppState().goodDescriptionApiB = false;
                         FFAppState().clientApiB = false;
+                        FFAppState().warehouse2FilterValues = {};
+                        FFAppState().warehouse2FilterdColumns = [];
                         safeSetState(() {});
                         await _model.filterActionWarehouse2(context);
                         await action_blocks.orderWarehouseAction(context);

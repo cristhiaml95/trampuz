@@ -50,11 +50,68 @@ class _FiltersPopUpCalendarWidgetState
       );
     });
 
+    // Restore saved filter values
+    final savedFilters = FFAppState().calendarFilterValues;
+
     _model.orderNoTFTextController ??= TextEditingController();
     _model.orderNoTFFocusNode ??= FocusNode();
+    if (savedFilters['orderNoTF'] != null) {
+      _model.orderNoTFTextController.text = savedFilters['orderNoTF'];
+    }
 
     _model.licenceTFTextController ??= TextEditingController();
     _model.licenceTFFocusNode ??= FocusNode();
+    if (savedFilters['licenceTF'] != null) {
+      _model.licenceTFTextController.text = savedFilters['licenceTF'];
+    }
+
+    // Restore dropdown values
+    if (savedFilters['invStatusDD'] != null) {
+      _model.invStatusDDValueController =
+          FormFieldController<String>(savedFilters['invStatusDD']);
+    }
+    if (savedFilters['warehouseDD'] != null) {
+      _model.warehouseDDValueController =
+          FormFieldController<String>(savedFilters['warehouseDD']);
+    }
+    if (savedFilters['orderStatusDD'] != null) {
+      _model.orderStatusDDValueController =
+          FormFieldController<String>(savedFilters['orderStatusDD']);
+    }
+    if (savedFilters['flowDD'] != null) {
+      _model.flowDDValueController =
+          FormFieldController<String>(savedFilters['flowDD']);
+    }
+    if (savedFilters['improvementDD'] != null) {
+      _model.improvementDDValueController =
+          FormFieldController<String>(savedFilters['improvementDD']);
+    }
+    if (savedFilters['adminDD'] != null) {
+      _model.adminDDValueController =
+          FormFieldController<String>(savedFilters['adminDD']);
+    }
+
+    // Restore date pickers
+    if (savedFilters['datePicked1'] != null) {
+      _model.datePicked1 = savedFilters['datePicked1'];
+    }
+    if (savedFilters['datePicked2'] != null) {
+      _model.datePicked2 = savedFilters['datePicked2'];
+    }
+
+    // Restore custom widget states
+    if (savedFilters['clientApiB'] != null) {
+      FFAppState().clientApiB = savedFilters['clientApiB'];
+    }
+    if (savedFilters['goodDescriptionApiB'] != null) {
+      FFAppState().goodDescriptionApiB = savedFilters['goodDescriptionApiB'];
+    }
+    if (savedFilters['clientApiId'] != null) {
+      FFAppState().clientApiId = savedFilters['clientApiId'];
+    }
+    if (savedFilters['goodDescriptionApiId'] != null) {
+      FFAppState().goodDescriptionApiId = savedFilters['goodDescriptionApiId'];
+    }
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -1293,6 +1350,9 @@ class _FiltersPopUpCalendarWidgetState
                         });
                         FFAppState().goodDescriptionApiB = false;
                         FFAppState().clientApiB = false;
+                        // Clear persisted filter values
+                        FFAppState().calendarFilterValues = {};
+                        FFAppState().calendarFilterColumns = [];
                         safeSetState(() {});
                         await _model.filterAction(context);
                         await action_blocks.orderWarehouseAction(context);

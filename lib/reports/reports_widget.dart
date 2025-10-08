@@ -80,11 +80,15 @@ class _ReportsWidgetState extends State<ReportsWidget>
           );
         }),
         Future(() async {
-          FFAppState().reportsApiV = '';
-          safeSetState(() {});
-          FFAppState().reportsApiV = (String var1) {
-            return var1 + '&order=crono.desc.nullslast&is_deleted=eq.false';
-          }(FFAppState().reportsApiV);
+          // Check if we have saved filter values to restore
+          if (FFAppState().reportsFilterValues.isEmpty) {
+            FFAppState().reportsApiV = '';
+            safeSetState(() {});
+            FFAppState().reportsApiV = (String var1) {
+              return var1 + '&order=crono.desc.nullslast&is_deleted=eq.false';
+            }(FFAppState().reportsApiV);
+          }
+          // else: reportsApiV already has the saved query from filterAction
           await action_blocks.orderWarehouseAction(context);
           safeSetState(() {});
         }),

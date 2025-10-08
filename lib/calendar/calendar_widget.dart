@@ -87,19 +87,25 @@ class _CalendarWidgetState extends State<CalendarWidget>
           safeSetState(() {});
         }),
         Future(() async {
-          FFAppState().calendarApiV = (String var1, String var2) {
-            return var1 + '&order=eta_date.desc.nullslast&eta_date=eq.' + var2;
-          }(
-              FFAppState().calendarApiV,
-              valueOrDefault<String>(
-                dateTimeFormat(
-                  "yyyy-MM-dd",
-                  getCurrentTimestamp,
-                  locale: FFLocalizations.of(context).languageCode,
-                ),
-                '/',
-              ));
-          safeSetState(() {});
+          // Check if we have saved filter values to restore
+          if (FFAppState().calendarFilterValues.isEmpty) {
+            FFAppState().calendarApiV = (String var1, String var2) {
+              return var1 +
+                  '&order=eta_date.desc.nullslast&eta_date=eq.' +
+                  var2;
+            }(
+                FFAppState().calendarApiV,
+                valueOrDefault<String>(
+                  dateTimeFormat(
+                    "yyyy-MM-dd",
+                    getCurrentTimestamp,
+                    locale: FFLocalizations.of(context).languageCode,
+                  ),
+                  '/',
+                ));
+            safeSetState(() {});
+          }
+          // else: calendarApiV already has the saved query from filterAction
           await action_blocks.orderWarehouseAction(context);
           safeSetState(() {});
         }),

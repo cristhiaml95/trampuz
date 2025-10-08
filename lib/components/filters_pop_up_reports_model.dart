@@ -105,6 +105,29 @@ class FiltersPopUpReportsModel
   Future filterAction(BuildContext context) async {
     List<String>? filteredColumns;
 
+    // Save filter values for persistence
+    FFAppState().reportsFilterValues = {
+      'orderNoTF': orderNoTFTextController.text,
+      'invStatusDD': invStatusDDValue,
+      'flowDD': flowDDValue,
+      'licenceTF': licenceTFTextController.text,
+      'improvementDD': improvementDDValue,
+      'containerNoTF': containerNoTFTextController.text,
+      'universalRefNumTF': universalRefNumTFTextController.text,
+      'fMSrefTF': fMSrefTFTextController.text,
+      'loadRefDvhTF': loadRefDvhTFTextController.text,
+      'customDD': customDDValue,
+      'intCustomTF': intCustomTFTextController.text,
+      'goodDD': goodDDValue,
+      'datePicked1': datePicked1,
+      'datePicked2': datePicked2,
+      'packagingDD': packagingDDValue,
+      'clientApiB': FFAppState().clientApiB,
+      'goodDescriptionApiB': FFAppState().goodDescriptionApiB,
+      'clientApiId': FFAppState().clientApiId,
+      'goodDescriptionApiId': FFAppState().goodDescriptionApiId,
+    };
+
     FFAppState().reportsApiV = '';
     FFAppState().reportsApiV = (String var1) {
       return var1 + '&limit=50&is_deleted=eq.false';

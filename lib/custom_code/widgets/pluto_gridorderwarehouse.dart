@@ -97,6 +97,9 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
   bool _isResetting =
       false; // Nueva bandera para evitar restauración tras reset
 
+  /// ID del perfil activo actual (para forzar rebuild del PlutoGrid)
+  String _currentActiveId = '';
+
   /// Firma inmutable de filteredColumns para detectar cambios aunque se mute la misma lista
   late String _filteredSig;
 
@@ -155,6 +158,8 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     final vis = List<String>.from(payload['visible'] ?? const <String>[]);
     final hid = List<String>.from(payload['hidden'] ?? const <String>[]);
     final wMap = Map<String, dynamic>.from(payload['widths'] ?? const {});
+    final ord = List<String>.from(
+        payload['order'] ?? const <String>[]); // NUEVO: incluir orden
 
     // visible: importa el orden
     final visPart = vis.join('|');
@@ -172,7 +177,10 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     }
     final widPart = widthParts.join('|');
 
-    return 'V:${visPart}__H:${hidPart}__W:${widPart}';
+    // order: importa el orden completo de todas las columnas
+    final ordPart = ord.join('|');
+
+    return 'V:${visPart}__H:${hidPart}__W:${widPart}__O:${ordPart}';
   }
 
   /* --------------- INIT --------------- */
@@ -203,8 +211,24 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     _filteredSig = _computeFilteredSig(widget.filteredColumns);
     _columnsSig = _computeColumnsSig(widget.columns);
 
+    // Inicializar activeId actual desde FFAppState
+    _initializeCurrentActiveId();
+
     _buildNotifiers();
     _columns = _buildColumns(widget.data);
+  }
+
+  /// Inicializa _currentActiveId desde FFAppState al arrancar
+  void _initializeCurrentActiveId() {
+    final list = List<dynamic>.from(FFAppState().plutogridTableInfo ?? []);
+    final raw = list.firstWhere(
+      (e) => e is Map && e['view'] == widget.viewName,
+      orElse: () => <String, dynamic>{},
+    );
+
+    if (raw is Map && raw.isNotEmpty) {
+      _currentActiveId = (raw['activeId'] as String?) ?? '';
+    }
   }
 
   /// ==== Migración de formato viejo → nuevo (1 JSON por vista con hasta 3 states) ====
@@ -325,7 +349,10 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
   @override
   void dispose() {
     for (final n in _notifiers.values) n.dispose();
-    if (mounted) _stateManager.removeListener(_handleSelectionChange);
+    if (mounted) {
+      _stateManager.removeListener(_handleSelectionChange);
+      _stateManager.removeListener(_handleColumnChanges);
+    }
     _saveLayout(); // guarda y dispara acción
     super.dispose();
   }
@@ -403,6 +430,18 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
       (raw['states'] ?? const <Map<String, dynamic>>[])
           .map((e) => Map<String, dynamic>.from(e as Map)),
     );
+
+    // CRÍTICO: Actualizar activeId actual para forzar rebuild del PlutoGrid
+    if (activeId != null && activeId != _currentActiveId) {
+      print('🔄 ActiveId cambió: $_currentActiveId -> $activeId');
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) {
+          setState(() {
+            _currentActiveId = activeId;
+          });
+        }
+      });
+    }
 
     Map<String, dynamic> state = <String, dynamic>{};
 
@@ -1503,7 +1542,7 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
       height: widget.height,
       child: PlutoGrid(
         key: ValueKey(
-          'grid_${widget.language}_${_gridVersion}_$_filteredSig',
+          'grid_${widget.language}_${_gridVersion}_${_filteredSig}_$_currentActiveId',
         ),
         mode: PlutoGridMode.normal,
         columns: _columns,
@@ -1574,6 +1613,8 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
           _stateManager = e.stateManager
             ..setSelectingMode(PlutoGridSelectingMode.cell);
           _stateManager.addListener(_handleSelectionChange);
+          _stateManager.addListener(
+              _handleColumnChanges); // Detectar cambios en columnas (orden, ancho, visibilidad)
           _gridLoaded = true;
           _restoreLayout();
         },
@@ -1617,6 +1658,61 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     if (cell.value is String) {
       await Clipboard.setData(ClipboardData(text: cell.value as String));
     }
+  }
+
+  /* ----- cambios en columnas (orden, ancho, visibilidad) ----- */
+  void _handleColumnChanges() {
+    // NO guardar si estamos restaurando o reseteando
+    if (!_gridLoaded || _isResetting || _isRestoring) return;
+
+    // Crear payload actualizado con el nuevo orden
+    final newPayload = _buildCurrentGridPayload();
+    final newSig = _computePayloadSignature(newPayload);
+
+    // Solo actualizar si realmente cambió algo
+    if (newSig != _lastAppliedLayoutSig) {
+      print('🔄 Columnas cambiadas - actualizando estado');
+      _lastAppliedLayoutSig = newSig;
+
+      // Actualizar el estado activo en plutogridTableInfo
+      _saveCurrentLayoutToActiveState();
+    }
+  }
+
+  void _saveCurrentLayoutToActiveState() {
+    final viewName = widget.viewName ?? 'orderWarehouse';
+    final plutogridInfo = FFAppState().plutogridTableInfo.toList();
+
+    // Buscar la vista actual
+    final viewIdx =
+        plutogridInfo.indexWhere((v) => v is Map && v['view'] == viewName);
+
+    if (viewIdx < 0) return;
+
+    final viewData = Map<String, dynamic>.from(plutogridInfo[viewIdx] as Map);
+    final activeId = viewData['activeId']?.toString() ?? '';
+    final states = (viewData['states'] as List?)
+            ?.map((s) => Map<String, dynamic>.from(s as Map))
+            .toList() ??
+        [];
+
+    // Buscar el state activo
+    final stateIdx = states.indexWhere((s) => s['id'] == activeId);
+    if (stateIdx < 0) return;
+
+    // Actualizar el payload del state activo
+    final currentPayload = _buildCurrentGridPayload();
+    states[stateIdx]['payload'] = currentPayload;
+    states[stateIdx]['updatedAt'] = DateTime.now().toIso8601String();
+
+    // Actualizar en el objeto de vista
+    viewData['states'] = states;
+    plutogridInfo[viewIdx] = viewData;
+
+    // Guardar en FFAppState
+    FFAppState().plutogridTableInfo = plutogridInfo;
+
+    print('💾 Estado guardado automáticamente para activeId: $activeId');
   }
 
   /* -------- restore layout -------- */
@@ -1685,6 +1781,8 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     final widths = {for (final c in cols) c.field: c.width};
     final order = cols.map((c) => c.field).toList(); // NUEVO: guardar orden
 
+    print('💾 Guardando payload con orden: $order');
+
     return {
       'visible': visibles,
       'hidden': hiddens,
@@ -1696,36 +1794,51 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
   Future<void> _applyGridPayload(Map<String, dynamic> p) async {
     if (!_gridLoaded || _stateManager.refColumns.originalList.isEmpty) return;
 
+    // CRÍTICO: Activar bandera para evitar que _handleColumnChanges() guarde durante la restauración
+    _isRestoring = true;
+
     final visible = List<String>.from(p['visible'] ?? const <String>[]);
     final hidden = Set<String>.from(p['hidden'] ?? const <String>{});
     final widths = Map<String, dynamic>.from(p['widths'] ?? const {});
-    final order = List<String>.from(p['order'] ?? const <String>[]); // NUEVO: leer orden guardado
+    final order = List<String>.from(
+        p['order'] ?? const <String>[]); // NUEVO: leer orden guardado
 
-    // NUEVO: Aplicar orden de columnas si existe
-    if (order.isNotEmpty) {
-      // Reorganizar columnas según el orden guardado
-      for (int i = order.length - 1; i >= 0; i--) {
-        final fieldName = order[i];
-        final col = _findColumn(fieldName);
-        if (col == null) continue;
-        
-        // Mover la columna al inicio (las agregamos en reversa para mantener el orden)
-        final target = _stateManager.refColumns.originalList.first;
-        _stateManager.moveColumn(column: col, targetColumn: target);
-      }
-    }
-
-    for (int i = visible.length - 1; i >= 0; i--) {
-      final col = _findColumn(visible[i]);
+    // PASO 1: Primero asegurar visibilidad de todas las columnas
+    print('🔵 Paso 1: Restaurando visibilidad');
+    for (final fieldName in visible) {
+      final col = _findColumn(fieldName);
       if (col == null) continue;
       if (col.hide) _stateManager.hideColumn(col, false);
-      final target = _stateManager.refColumns.originalList.first;
-      _stateManager.moveColumn(column: col, targetColumn: target);
     }
 
     for (final f in hidden) {
       final col = _findColumn(f);
       if (col != null && !col.hide) _stateManager.hideColumn(col, true);
+    }
+
+    // PASO 2: Luego aplicar orden de columnas
+    if (order.isNotEmpty) {
+      print('🔵 Paso 2: Aplicando orden guardado: $order');
+      // Reorganizar columnas según el orden guardado
+      for (int i = order.length - 1; i >= 0; i--) {
+        final fieldName = order[i];
+        final col = _findColumn(fieldName);
+        if (col == null) {
+          print('⚠️ Columna no encontrada: $fieldName');
+          continue;
+        }
+
+        // Mover la columna al inicio (las agregamos en reversa para mantener el orden)
+        final target = _stateManager.refColumns.originalList.first;
+        _stateManager.moveColumn(column: col, targetColumn: target);
+      }
+
+      // Verificar orden final
+      final finalOrder =
+          _stateManager.refColumns.originalList.map((c) => c.field).toList();
+      print('✅ Orden final aplicado: $finalOrder');
+    } else {
+      print('⚠️ No hay orden guardado en el payload');
     }
 
     widths.forEach((f, w) {
@@ -1737,5 +1850,12 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     });
 
     _stateManager.notifyListeners();
+
+    // CRÍTICO: Desactivar bandera DESPUÉS de aplicar todo
+    // Usar postFrameCallback para asegurar que PlutoGrid termine de procesar
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _isRestoring = false;
+      print('✅ Restauración completa - listener reactivado');
+    });
   }
 }

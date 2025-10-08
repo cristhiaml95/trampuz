@@ -49,26 +49,99 @@ class _FiltersPopUpReportsWidgetState extends State<FiltersPopUpReportsWidget> {
       );
     });
 
+    // Restore saved filter values
+    final savedFilters = FFAppState().reportsFilterValues;
+
     _model.licenceTFTextController ??= TextEditingController();
     _model.licenceTFFocusNode ??= FocusNode();
+    if (savedFilters['licenceTF'] != null) {
+      _model.licenceTFTextController.text = savedFilters['licenceTF'];
+    }
 
     _model.containerNoTFTextController ??= TextEditingController();
     _model.containerNoTFFocusNode ??= FocusNode();
+    if (savedFilters['containerNoTF'] != null) {
+      _model.containerNoTFTextController.text = savedFilters['containerNoTF'];
+    }
 
     _model.universalRefNumTFTextController ??= TextEditingController();
     _model.universalRefNumTFFocusNode ??= FocusNode();
+    if (savedFilters['universalRefNumTF'] != null) {
+      _model.universalRefNumTFTextController.text =
+          savedFilters['universalRefNumTF'];
+    }
 
     _model.fMSrefTFTextController ??= TextEditingController();
     _model.fMSrefTFFocusNode ??= FocusNode();
+    if (savedFilters['fMSrefTF'] != null) {
+      _model.fMSrefTFTextController.text = savedFilters['fMSrefTF'];
+    }
 
     _model.loadRefDvhTFTextController ??= TextEditingController();
     _model.loadRefDvhTFFocusNode ??= FocusNode();
+    if (savedFilters['loadRefDvhTF'] != null) {
+      _model.loadRefDvhTFTextController.text = savedFilters['loadRefDvhTF'];
+    }
 
     _model.orderNoTFTextController ??= TextEditingController();
     _model.orderNoTFFocusNode ??= FocusNode();
+    if (savedFilters['orderNoTF'] != null) {
+      _model.orderNoTFTextController.text = savedFilters['orderNoTF'];
+    }
 
     _model.intCustomTFTextController ??= TextEditingController();
     _model.intCustomTFFocusNode ??= FocusNode();
+    if (savedFilters['intCustomTF'] != null) {
+      _model.intCustomTFTextController.text = savedFilters['intCustomTF'];
+    }
+
+    // Restore dropdown values
+    if (savedFilters['invStatusDD'] != null) {
+      _model.invStatusDDValueController =
+          FormFieldController<String>(savedFilters['invStatusDD']);
+    }
+    if (savedFilters['flowDD'] != null) {
+      _model.flowDDValueController =
+          FormFieldController<String>(savedFilters['flowDD']);
+    }
+    if (savedFilters['improvementDD'] != null) {
+      _model.improvementDDValueController =
+          FormFieldController<String>(savedFilters['improvementDD']);
+    }
+    if (savedFilters['customDD'] != null) {
+      _model.customDDValueController =
+          FormFieldController<String>(savedFilters['customDD']);
+    }
+    if (savedFilters['goodDD'] != null) {
+      _model.goodDDValueController =
+          FormFieldController<String>(savedFilters['goodDD']);
+    }
+    if (savedFilters['packagingDD'] != null) {
+      _model.packagingDDValueController =
+          FormFieldController<String>(savedFilters['packagingDD']);
+    }
+
+    // Restore date pickers
+    if (savedFilters['datePicked1'] != null) {
+      _model.datePicked1 = savedFilters['datePicked1'];
+    }
+    if (savedFilters['datePicked2'] != null) {
+      _model.datePicked2 = savedFilters['datePicked2'];
+    }
+
+    // Restore custom widget states
+    if (savedFilters['clientApiB'] != null) {
+      FFAppState().clientApiB = savedFilters['clientApiB'];
+    }
+    if (savedFilters['goodDescriptionApiB'] != null) {
+      FFAppState().goodDescriptionApiB = savedFilters['goodDescriptionApiB'];
+    }
+    if (savedFilters['clientApiId'] != null) {
+      FFAppState().clientApiId = savedFilters['clientApiId'];
+    }
+    if (savedFilters['goodDescriptionApiId'] != null) {
+      FFAppState().goodDescriptionApiId = savedFilters['goodDescriptionApiId'];
+    }
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -1936,6 +2009,9 @@ class _FiltersPopUpReportsWidgetState extends State<FiltersPopUpReportsWidget> {
                         });
                         FFAppState().goodDescriptionApiB = false;
                         FFAppState().clientApiB = false;
+                        // Clear persisted filter values
+                        FFAppState().reportsFilterValues = {};
+                        FFAppState().reportsFilteredColumns = [];
                         safeSetState(() {});
                         await _model.filterAction(context);
                         await action_blocks.orderWarehouseAction(context);

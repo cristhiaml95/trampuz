@@ -79,12 +79,16 @@ class _Warehouse2WidgetState extends State<Warehouse2Widget>
           );
         }),
         Future(() async {
-          FFAppState().warehouse2ApiV = '';
-          safeSetState(() {});
-          FFAppState().warehouse2ApiV = (String var1) {
-            return var1 +
-                '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50&custom_name=neq.CARINSKI%20POSTOPEK';
-          }(FFAppState().warehouse2ApiV);
+          // Check if we have saved filter values to restore
+          if (FFAppState().warehouse2FilterValues.isEmpty) {
+            FFAppState().warehouse2ApiV = '';
+            safeSetState(() {});
+            FFAppState().warehouse2ApiV = (String var1) {
+              return var1 +
+                  '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50&custom_name=neq.CARINSKI%20POSTOPEK';
+            }(FFAppState().warehouse2ApiV);
+          }
+          // else: warehouse2ApiV already has the saved query from filterAction
           await action_blocks.orderWarehouseAction(context);
           safeSetState(() {});
         }),

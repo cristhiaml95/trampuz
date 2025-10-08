@@ -87,12 +87,16 @@ class _CustomsViewWidgetState extends State<CustomsViewWidget>
           );
         }),
         Future(() async {
-          FFAppState().customsApiV = '';
-          safeSetState(() {});
-          FFAppState().customsApiV = (String var1) {
-            return var1 +
-                '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50&custom=eq.756a1fad-8f1e-43d4-ad2a-00ffdca46299';
-          }(FFAppState().customsApiV);
+          // Check if we have saved filter values to restore
+          if (FFAppState().customsFilterValues.isEmpty) {
+            FFAppState().customsApiV = '';
+            safeSetState(() {});
+            FFAppState().customsApiV = (String var1) {
+              return var1 +
+                  '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50&custom=eq.756a1fad-8f1e-43d4-ad2a-00ffdca46299';
+            }(FFAppState().customsApiV);
+          }
+          // else: customsApiV already has the saved query from filterAction
           await action_blocks.orderWarehouseAction(context);
           safeSetState(() {});
           _model.quantityOP = await actions.quantityBalanceAction(

@@ -1298,6 +1298,37 @@ class FFAppState extends ChangeNotifier {
     _calendarApiV = value;
   }
 
+  Map<String, dynamic> _orderWarehouseFilterValues = {};
+  Map<String, dynamic> get orderWarehouseFilterValues =>
+      _orderWarehouseFilterValues;
+  set orderWarehouseFilterValues(Map<String, dynamic> value) {
+    _orderWarehouseFilterValues = value;
+  }
+
+  Map<String, dynamic> _warehouse2FilterValues = {};
+  Map<String, dynamic> get warehouse2FilterValues => _warehouse2FilterValues;
+  set warehouse2FilterValues(Map<String, dynamic> value) {
+    _warehouse2FilterValues = value;
+  }
+
+  Map<String, dynamic> _customsFilterValues = {};
+  Map<String, dynamic> get customsFilterValues => _customsFilterValues;
+  set customsFilterValues(Map<String, dynamic> value) {
+    _customsFilterValues = value;
+  }
+
+  Map<String, dynamic> _calendarFilterValues = {};
+  Map<String, dynamic> get calendarFilterValues => _calendarFilterValues;
+  set calendarFilterValues(Map<String, dynamic> value) {
+    _calendarFilterValues = value;
+  }
+
+  Map<String, dynamic> _reportsFilterValues = {};
+  Map<String, dynamic> get reportsFilterValues => _reportsFilterValues;
+  set reportsFilterValues(Map<String, dynamic> value) {
+    _reportsFilterValues = value;
+  }
+
   bool _showFiltersPopUpWarehouse2 = false;
   bool get showFiltersPopUpWarehouse2 => _showFiltersPopUpWarehouse2;
   set showFiltersPopUpWarehouse2(bool value) {

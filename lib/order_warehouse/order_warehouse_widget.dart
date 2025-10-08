@@ -88,12 +88,16 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
           );
         }),
         Future(() async {
-          FFAppState().orderWarehouseApiV = 'is_deleted=eq.false';
-          safeSetState(() {});
-          FFAppState().orderWarehouseApiV = (String var1) {
-            return var1 +
-                '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50&custom=neq.756a1fad-8f1e-43d4-ad2a-00ffdca46299';
-          }(FFAppState().orderWarehouseApiV);
+          // Si hay filtros guardados, mantener el query existente, sino crear uno nuevo
+          if (FFAppState().orderWarehouseFilterValues.isEmpty) {
+            FFAppState().orderWarehouseApiV = 'is_deleted=eq.false';
+            safeSetState(() {});
+            FFAppState().orderWarehouseApiV = (String var1) {
+              return var1 +
+                  '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50&custom=neq.756a1fad-8f1e-43d4-ad2a-00ffdca46299';
+            }(FFAppState().orderWarehouseApiV);
+          }
+          // Si hay filtros guardados, orderWarehouseApiV ya tiene el query correcto
           await action_blocks.orderWarehouseAction(context);
           safeSetState(() {});
           _model.quantityOP = await actions.quantityBalanceAction(

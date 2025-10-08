@@ -69,6 +69,24 @@ class FiltersPopUpCalendarModel
   Future filterAction(BuildContext context) async {
     List<String>? filteredColumns;
 
+    // Save filter values for persistence
+    FFAppState().calendarFilterValues = {
+      'orderNoTF': orderNoTFTextController.text,
+      'invStatusDD': invStatusDDValue,
+      'warehouseDD': warehouseDDValue,
+      'orderStatusDD': orderStatusDDValue,
+      'flowDD': flowDDValue,
+      'licenceTF': licenceTFTextController.text,
+      'improvementDD': improvementDDValue,
+      'adminDD': adminDDValue,
+      'datePicked1': datePicked1,
+      'datePicked2': datePicked2,
+      'clientApiB': FFAppState().clientApiB,
+      'goodDescriptionApiB': FFAppState().goodDescriptionApiB,
+      'clientApiId': FFAppState().clientApiId,
+      'goodDescriptionApiId': FFAppState().goodDescriptionApiId,
+    };
+
     FFAppState().calendarApiV = '';
     FFAppState().calendarApiV = (String var1) {
       return var1 + '&limit=50&is_deleted=eq.false';

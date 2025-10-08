@@ -136,6 +136,37 @@ class FiltersPopUpOrderWarehouseModel
   Future filterAction(BuildContext context) async {
     List<String>? filteredColumns;
 
+    // Guardar valores de filtros para persistencia
+    FFAppState().orderWarehouseFilterValues = {
+      'orderNoTF': orderNoTFTextController.text,
+      'invStatusDD': invStatusDDValue,
+      'warehouseDD': warehouseDDValue,
+      'orderStatusDD': orderStatusDDValue,
+      'flowDD': flowDDValue,
+      'licenceTF': licenceTFTextController.text,
+      'improvementDD': improvementDDValue,
+      'containerNoTF': containerNoTFTextController.text,
+      'packagingDD': packagingDDValue,
+      'palletPositionTF': palletPositionTFTextController.text,
+      'universalRefNumTF': universalRefNumTFTextController.text,
+      'fMSrefTF': fMSrefTFTextController.text,
+      'loadRefDvhTF': loadRefDvhTFTextController.text,
+      'customDD': customDDValue,
+      'intCustomTF': intCustomTFTextController.text,
+      'goodDD': goodDDValue,
+      'assistant1DD': assistant1DDValue,
+      'assistant2DD': assistant2DDValue,
+      'adminDD': adminDDValue,
+      'barcodesTF': barcodesTFTextController.text,
+      'datePicked1': datePicked1,
+      'datePicked2': datePicked2,
+      'clientApiB': FFAppState().clientApiB,
+      'clientApiId': FFAppState().clientApiId,
+      'clientApiV': FFAppState().clientApiV,
+      'goodDescriptionApiB': FFAppState().goodDescriptionApiB,
+      'goodDescriptionApiId': FFAppState().goodDescriptionApiId,
+    };
+
     FFAppState().orderWarehouseApiV = 'is_deleted=eq.false';
     FFAppState().orderWarehouseApiV = (String var1) {
       return var1 +
