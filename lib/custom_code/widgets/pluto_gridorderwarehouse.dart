@@ -1699,6 +1699,21 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     final visible = List<String>.from(p['visible'] ?? const <String>[]);
     final hidden = Set<String>.from(p['hidden'] ?? const <String>{});
     final widths = Map<String, dynamic>.from(p['widths'] ?? const {});
+    final order = List<String>.from(p['order'] ?? const <String>[]); // NUEVO: leer orden guardado
+
+    // NUEVO: Aplicar orden de columnas si existe
+    if (order.isNotEmpty) {
+      // Reorganizar columnas según el orden guardado
+      for (int i = order.length - 1; i >= 0; i--) {
+        final fieldName = order[i];
+        final col = _findColumn(fieldName);
+        if (col == null) continue;
+        
+        // Mover la columna al inicio (las agregamos en reversa para mantener el orden)
+        final target = _stateManager.refColumns.originalList.first;
+        _stateManager.moveColumn(column: col, targetColumn: target);
+      }
+    }
 
     for (int i = visible.length - 1; i >= 0; i--) {
       final col = _findColumn(visible[i]);
