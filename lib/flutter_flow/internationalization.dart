@@ -184,18 +184,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '99r8wugx': {
       'en': 'administrator',
-      'es': 'administrador',
+      'es': 'administrator',
       'sl': 'administrator',
     },
     'jw8uoqy2': {
       'en': 'employee',
-      'es': 'empleado',
-      'sl': 'zaposleni',
+      'es': 'employee',
+      'sl': 'employee',
     },
     '2lk9a7co': {
       'en': 'superadmin',
-      'es': 'superadministrador',
-      'sl': 'superadministrator',
+      'es': 'superadmin',
+      'sl': 'superadmin',
     },
     'ui7rta8c': {
       'en': 'Status',
@@ -209,13 +209,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'dqqkgfoq': {
       'en': 'active',
-      'es': 'activo',
-      'sl': 'aktiven',
+      'es': 'active',
+      'sl': 'active',
     },
     'kgxxej2s': {
       'en': 'inactive',
-      'es': 'inactivo',
-      'sl': 'neaktiven',
+      'es': 'inactive',
+      'sl': 'inactive',
     },
     '617idpiw': {
       'en': 'Photo',
@@ -985,9 +985,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'sl': 'Razišči',
     },
     'n93kx1hi': {
-      'en': 'Order warehouse V4.2',
-      'es': 'Almacén de pedidos V4.2',
-      'sl': 'Skladišče naročil V4.2',
+      'en': 'Order warehouse V4.0.5',
+      'es': 'Almacén de pedidos V4.0.5',
+      'sl': 'Skladišče naročil V4.0.5',
     },
     't3kkdl4l': {
       'en': 'Movements',
@@ -1062,28 +1062,28 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '8ssuu897': {
       'en': 'all',
-      'es': 'todo',
-      'sl': 'vse',
+      'es': 'all',
+      'sl': 'all',
     },
     'olwk09ha': {
       'en': 'available',
-      'es': 'disponible',
-      'sl': 'na voljo',
+      'es': 'available',
+      'sl': 'available',
     },
     '7sys5903': {
       'en': 'disassociated',
-      'es': 'disociado',
-      'sl': 'disociiran',
+      'es': 'disassociated',
+      'sl': 'disassociated',
     },
     '59dfe1a7': {
       'en': 'error',
       'es': 'error',
-      'sl': 'napaka',
+      'sl': 'error',
     },
     '8h9bxrgw': {
       'en': 'all',
-      'es': 'todo',
-      'sl': 'vse',
+      'es': 'all',
+      'sl': 'all',
     },
     '060myq9m': {
       'en': 'Create new record',
@@ -1234,13 +1234,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0g3h7gq5': {
       'en': 'in',
-      'es': 'en',
-      'sl': 'v',
+      'es': 'in',
+      'sl': 'in',
     },
     'n5lql6na': {
       'en': 'out',
-      'es': 'afuera',
-      'sl': 'ven',
+      'es': 'out',
+      'sl': 'out',
     },
     '1132s9cq': {
       'en': 'Estimated arrival:',
@@ -1394,7 +1394,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'qbn00ie1': {
       'en': 'obdelava',
-      'es': 'Obdelava',
+      'es': 'obdelava',
       'sl': 'obdelava',
     },
     '3uyshhd2': {
@@ -1504,17 +1504,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '8071a2hn': {
       'en': 'kont.-20\"',
-      'es': 'cont.-20\"',
+      'es': 'kont.-20\"',
       'sl': 'kont.-20\"',
     },
     '34iug5uu': {
       'en': 'kont.-40\"',
-      'es': 'cont.-40\"',
+      'es': 'kont.-40\"',
       'sl': 'kont.-40\"',
     },
     '129g0l33': {
       'en': 'kont.-45\"',
-      'es': 'cont.-45\"',
+      'es': 'kont.-45\"',
       'sl': 'kont.-45\"',
     },
     'kembf9mg': {
@@ -1530,7 +1530,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ly59xnzd': {
       'en': 'silos',
       'es': 'silos',
-      'sl': 'silosi',
+      'sl': 'silos',
     },
     'xl522nwl': {
       'en': 'Container no:',
@@ -1957,13 +1957,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'fqm22pzs': {
       'en': 'in',
-      'es': 'en',
-      'sl': 'v',
+      'es': 'in',
+      'sl': 'in',
     },
     'fs6cejc5': {
       'en': 'out',
-      'es': 'afuera',
-      'sl': 'ven',
+      'es': 'out',
+      'sl': 'out',
     },
     '3uam36q8': {
       'en': 'Estimated arrival:',
@@ -2728,13 +2728,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'beno68e9': {
       'en': 'in',
-      'es': 'en',
-      'sl': 'v',
+      'es': 'in',
+      'sl': 'in',
     },
     '4f68f0jj': {
       'en': 'out',
-      'es': 'afuera',
-      'sl': 'ven',
+      'es': 'out',
+      'sl': 'out',
     },
     '0pln6r7m': {
       'en': 'Estimated arrival:  ',
@@ -2838,7 +2838,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '9mqiqqmd': {
       'en': 'obdelava',
-      'es': 'Obdelava',
+      'es': 'obdelava',
       'sl': 'obdelava',
     },
     'ak1nrnrl': {
@@ -2908,17 +2908,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'l8k0xuaf': {
       'en': 'kont.-20\"',
-      'es': 'cont.-20\"',
+      'es': 'kont.-20\"',
       'sl': 'kont.-20\"',
     },
     '4citue3o': {
       'en': 'kont.-40\"',
-      'es': 'cont.-40\"',
+      'es': 'kont.-40\"',
       'sl': 'kont.-40\"',
     },
     '4y1sq1d7': {
       'en': 'kont.-45\"',
-      'es': 'cont.-45\"',
+      'es': 'kont.-45\"',
       'sl': 'kont.-45\"',
     },
     '2572s363': {
@@ -2934,7 +2934,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'onw3427g': {
       'en': 'silos',
       'es': 'silos',
-      'sl': 'silosi',
+      'sl': 'silos',
     },
     '241xgsk0': {
       'en': 'Container No:  ',
@@ -3622,13 +3622,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'mb6t6xsl': {
       'en': 'in',
-      'es': 'en',
-      'sl': 'v',
+      'es': 'in',
+      'sl': 'in',
     },
     'uhas6n8o': {
       'en': 'out',
-      'es': 'afuera',
-      'sl': 'ven',
+      'es': 'out',
+      'sl': 'out',
     },
     'u3y2wa25': {
       'en': 'Estimated arrival:  ',
@@ -4656,18 +4656,18 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '9m5mxg7y': {
       'en': 'administrator',
-      'es': 'administrador',
+      'es': 'administrator',
       'sl': 'administrator',
     },
     'ononnqos': {
       'en': 'employee',
-      'es': 'empleado',
-      'sl': 'zaposleni',
+      'es': 'employee',
+      'sl': 'employee',
     },
     'mi522foy': {
       'en': 'superadmin',
-      'es': 'superadministrador',
-      'sl': 'superadministrator',
+      'es': 'superadmin',
+      'sl': 'superadmin',
     },
     'se61s3dd': {
       'en': 'Status',
@@ -4681,13 +4681,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'elbd5t7m': {
       'en': 'active',
-      'es': 'activo',
-      'sl': 'aktiven',
+      'es': 'active',
+      'sl': 'active',
     },
     '8k0yud3h': {
       'en': 'inactive',
-      'es': 'inactivo',
-      'sl': 'neaktiven',
+      'es': 'inactive',
+      'sl': 'inactive',
     },
     'q4pev31f': {
       'en': 'Photo',
@@ -4927,13 +4927,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0h51usfg': {
       'en': 'in',
-      'es': 'en',
-      'sl': 'v',
+      'es': 'in',
+      'sl': 'in',
     },
     '3xgeorn9': {
       'en': 'out',
-      'es': 'afuera',
-      'sl': 'ven',
+      'es': 'out',
+      'sl': 'out',
     },
     '57vjisxd': {
       'en': '/',
@@ -5351,13 +5351,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '0pa5ffde': {
       'en': 'in',
-      'es': 'en',
-      'sl': 'v',
+      'es': 'in',
+      'sl': 'in',
     },
     'as2kpdnx': {
       'en': 'out',
-      'es': 'afuera',
-      'sl': 'ven',
+      'es': 'out',
+      'sl': 'out',
     },
     'f2cvqq5f': {
       'en': '/',
@@ -5684,13 +5684,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'pm15yd41': {
       'en': 'in',
-      'es': 'en',
-      'sl': 'v',
+      'es': 'in',
+      'sl': 'in',
     },
     '1ssmqwop': {
       'en': 'out',
-      'es': 'afuera',
-      'sl': 'ven',
+      'es': 'out',
+      'sl': 'out',
     },
     'qaa3brb2': {
       'en': '/',
@@ -6012,13 +6012,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4xkuuyim': {
       'en': 'in',
-      'es': 'en',
-      'sl': 'v',
+      'es': 'in',
+      'sl': 'in',
     },
     'xsaa7972': {
       'en': 'out',
-      'es': 'afuera',
-      'sl': 'ven',
+      'es': 'out',
+      'sl': 'out',
     },
     'aqy6rmn5': {
       'en': '/',
@@ -6225,13 +6225,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'i9jtxrjr': {
       'en': 'in',
-      'es': 'en',
-      'sl': 'v',
+      'es': 'in',
+      'sl': 'in',
     },
     'tjmnpxn0': {
       'en': 'out',
-      'es': 'afuera',
-      'sl': 'ven',
+      'es': 'out',
+      'sl': 'out',
     },
     '6fde26ul': {
       'en': '/',

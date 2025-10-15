@@ -123,8 +123,7 @@ class _EditFormWidgetState extends State<EditFormWidget> {
               Future(() async {
                 _model.fatherOrderOP =
                     await TablesGroup.orderWarehouseTCall.call(
-                  orderWarehouseV:
-                      'id=eq.${widget.orderJson?.associatedOrder}',
+                  orderWarehouseV: 'id=eq.${widget.orderJson?.associatedOrder}',
                   userToken: currentJwtToken,
                 );
               }),
@@ -217,8 +216,8 @@ class _EditFormWidgetState extends State<EditFormWidget> {
     _model.barcodes2TFFocusNode ??= FocusNode();
 
     _model.repeatedbarcodesTTextController ??= TextEditingController(
-        text: functions
-            .joinStrings(widget.orderJson!.repeatedBarcodes.toList()));
+        text:
+            functions.joinStrings(widget.orderJson!.repeatedBarcodes.toList()));
     _model.repeatedbarcodesTFocusNode ??= FocusNode();
 
     _model.nonExistentBarcodesTTextController ??= TextEditingController(
@@ -373,18 +372,18 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                                                           '/',
                                                         ),
                                                         'quantity': 1,
-                                                        'pallet_position':
-                                                            widget.orderJson
-                                                                ?.palletPosition,
+                                                        'pallet_position': widget
+                                                            .orderJson
+                                                            ?.palletPosition,
                                                         'unit': widget
                                                             .orderJson?.details,
                                                         'weight': widget
                                                             .orderJson?.weight,
                                                         'good': widget
                                                             .orderJson?.good,
-                                                        'good_description':
-                                                            widget.orderJson
-                                                                ?.goodDescription,
+                                                        'good_description': widget
+                                                            .orderJson
+                                                            ?.goodDescription,
                                                         'packaging': widget
                                                             .orderJson
                                                             ?.packaging,
@@ -454,7 +453,8 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                                                           if (widget.orderJson
                                                                   ?.flow ==
                                                               'in') {
-                                                            return ((widget.orderJson?.associatedOrder !=
+                                                            return ((widget.orderJson
+                                                                                ?.associatedOrder !=
                                                                             null &&
                                                                         widget.orderJson
                                                                                 ?.associatedOrder !=
@@ -482,9 +482,9 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                                                         'taric_code': widget
                                                             .orderJson
                                                             ?.taricCode,
-                                                        'customs_percentage':
-                                                            widget.orderJson
-                                                                ?.customsPercentage,
+                                                        'customs_percentage': widget
+                                                            .orderJson
+                                                            ?.customsPercentage,
                                                         'euro_or_dolar': widget
                                                             .orderJson
                                                             ?.euroOrDolar,
@@ -623,18 +623,18 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                                                           '/',
                                                         ),
                                                         'quantity': 1,
-                                                        'pallet_position':
-                                                            widget.orderJson
-                                                                ?.palletPosition,
+                                                        'pallet_position': widget
+                                                            .orderJson
+                                                            ?.palletPosition,
                                                         'unit': widget
                                                             .orderJson?.details,
                                                         'weight': widget
                                                             .orderJson?.weight,
                                                         'good': widget
                                                             .orderJson?.good,
-                                                        'good_description':
-                                                            widget.orderJson
-                                                                ?.goodDescription,
+                                                        'good_description': widget
+                                                            .orderJson
+                                                            ?.goodDescription,
                                                         'packaging': widget
                                                             .orderJson
                                                             ?.packaging,
@@ -705,9 +705,9 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                                                         'taric_code': widget
                                                             .orderJson
                                                             ?.taricCode,
-                                                        'customs_percentage':
-                                                            widget.orderJson
-                                                                ?.customsPercentage,
+                                                        'customs_percentage': widget
+                                                            .orderJson
+                                                            ?.customsPercentage,
                                                         'euro_or_dolar': widget
                                                             .orderJson
                                                             ?.euroOrDolar,
@@ -717,12 +717,12 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                                                         'init_cost': widget
                                                             .orderJson
                                                             ?.initCost,
-                                                        'exchanged_cost':
-                                                            widget.orderJson
-                                                                ?.exchangedCost,
-                                                        'value_per_unit':
-                                                            widget.orderJson
-                                                                ?.valuePerUnit,
+                                                        'exchanged_cost': widget
+                                                            .orderJson
+                                                            ?.exchangedCost,
+                                                        'value_per_unit': widget
+                                                            .orderJson
+                                                            ?.valuePerUnit,
                                                         'custom_percentage_per_cost':
                                                             widget.orderJson
                                                                 ?.customPercentagePerCost,
@@ -924,9 +924,9 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                                                           '/',
                                                         ),
                                                         'quantity': 1,
-                                                        'pallet_position':
-                                                            widget.orderJson
-                                                                ?.palletPosition,
+                                                        'pallet_position': widget
+                                                            .orderJson
+                                                            ?.palletPosition,
                                                         'unit': widget
                                                             .orderJson?.details,
                                                         'good': widget
@@ -970,7 +970,8 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                                                           if (widget.orderJson
                                                                   ?.flow ==
                                                               'in') {
-                                                            return ((widget.orderJson?.associatedOrder !=
+                                                            return ((widget.orderJson
+                                                                                ?.associatedOrder !=
                                                                             null &&
                                                                         widget.orderJson
                                                                                 ?.associatedOrder !=
@@ -998,9 +999,9 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                                                         'taric_code': widget
                                                             .orderJson
                                                             ?.taricCode,
-                                                        'customs_percentage':
-                                                            widget.orderJson
-                                                                ?.customsPercentage,
+                                                        'customs_percentage': widget
+                                                            .orderJson
+                                                            ?.customsPercentage,
                                                         'exchange_rate_used':
                                                             widget.orderJson
                                                                 ?.exchangeRateUsed,
@@ -6585,8 +6586,10 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                                                                             '/'))
                                                                     : true) {
                                                                   _model
-                                                                      .unitLast = _model.unitTFTextController.text !=
-                                                                              ''
+                                                                      .unitLast = _model
+                                                                              .unitTFTextController
+                                                                              .text !=
+                                                                          ''
                                                                       ? int.parse(_model
                                                                           .unitTFTextController
                                                                           .text)
@@ -6790,6 +6793,8 @@ class _EditFormWidgetState extends State<EditFormWidget> {
 
                                                                     if (_model
                                                                         .sureQueryOP!) {
+                                                                      // Cerrar el edit_form y regresar a la vista anterior
+                                                                      // Los filtros se mantienen porque están en FFAppState
                                                                       Navigator.pop(
                                                                           context);
                                                                     }
@@ -6813,39 +6818,6 @@ class _EditFormWidgetState extends State<EditFormWidget> {
                                                                             FlutterFlowTheme.of(context).secondary,
                                                                       ),
                                                                     );
-                                                                  }
-
-                                                                  if ((widget.viewFrom ==
-                                                                          '/orderWarehouse') ||
-                                                                      (widget.viewFrom ==
-                                                                          '/')) {
-                                                                    context.pushNamed(
-                                                                        OrderWarehouseWidget
-                                                                            .routeName);
-                                                                  } else if (widget
-                                                                          .viewFrom ==
-                                                                      '/warehouse2') {
-                                                                    context.pushNamed(
-                                                                        Warehouse2Widget
-                                                                            .routeName);
-                                                                  } else if (widget
-                                                                          .viewFrom ==
-                                                                      '/customs') {
-                                                                    context.pushNamed(
-                                                                        CustomsViewWidget
-                                                                            .routeName);
-                                                                  } else if (widget
-                                                                          .viewFrom ==
-                                                                      '/calendar') {
-                                                                    context.pushNamed(
-                                                                        CalendarWidget
-                                                                            .routeName);
-                                                                  } else if (widget
-                                                                          .viewFrom ==
-                                                                      '/reports') {
-                                                                    context.pushNamed(
-                                                                        ReportsWidget
-                                                                            .routeName);
                                                                   }
                                                                 } else {
                                                                   ScaffoldMessenger.of(

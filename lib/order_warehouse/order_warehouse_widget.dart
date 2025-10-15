@@ -94,7 +94,7 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
             safeSetState(() {});
             FFAppState().orderWarehouseApiV = (String var1) {
               return var1 +
-                  '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50&custom=neq.756a1fad-8f1e-43d4-ad2a-00ffdca46299';
+                  '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50';
             }(FFAppState().orderWarehouseApiV);
           }
           // Si hay filtros guardados, orderWarehouseApiV ya tiene el query correcto
@@ -981,7 +981,7 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'n93kx1hi' /* Order warehouse V4.2 */,
+                                                      'n93kx1hi' /* Order warehouse V4.0.5 */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)
@@ -2173,6 +2173,30 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
     "ui_en": "Damage Mark",
     "ui_es": "Marca de daño",
     "ui_sl": "Označba poškodbe",
+    "width": 180,
+    "datatype": "String"
+  },
+  {
+    "column_name": "quantity_available",
+    "ui_en": "Stock Qty.",
+    "ui_es": "Cant. stock",
+    "ui_sl": "Zaloga kol.",
+    "width": 120,
+    "datatype": "int"
+  },
+  {
+    "column_name": "weight_balance",
+    "ui_en": "Stock Weight(kg)",
+    "ui_es": "Peso stock(kg)",
+    "ui_sl": "Teža zaloge(kg)",
+    "width": 140,
+    "datatype": "double"
+  },
+  {
+    "column_name": "warehouse_position_name",
+    "ui_en": "Warehouse Pos.",
+    "ui_es": "Pos. almacén",
+    "ui_sl": "Položaj sklada",
     "width": 180,
     "datatype": "String"
   },

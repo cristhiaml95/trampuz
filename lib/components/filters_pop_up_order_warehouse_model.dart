@@ -170,7 +170,7 @@ class FiltersPopUpOrderWarehouseModel
     FFAppState().orderWarehouseApiV = 'is_deleted=eq.false';
     FFAppState().orderWarehouseApiV = (String var1) {
       return var1 +
-          '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50&custom_name=neq.CARINSKI%20POSTOPEK';
+          '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50';
     }(FFAppState().orderWarehouseApiV);
     if (orderNoTFTextController.text != '') {
       FFAppState().orderWarehouseApiV = (String var1, String var2) {

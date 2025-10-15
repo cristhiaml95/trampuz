@@ -658,7 +658,8 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     _isResetting = true; // Activar bandera para evitar restauración automática
 
     setState(() {
-      _columns = _buildColumns(widget.data);
+      _columns =
+          _buildColumns(widget.data, useDefault: true); // Usar orden del JSON
       _layoutRestored = true; // Marcar como restaurado para evitar auto-restore
       _gridVersion++;
     });
@@ -1279,26 +1280,37 @@ class _PlutoGridorderwarehouseState extends State<PlutoGridorderwarehouse> {
     );
   }
 
-  List<PlutoColumn> _buildColumns(List<dynamic>? data) {
+  List<PlutoColumn> _buildColumns(List<dynamic>? data,
+      {bool useDefault = false}) {
     final cols = <PlutoColumn>[];
-    final layout = _cachedLayout();
-    final vis = List<String>.from(layout['visible'] ?? []);
-    final hidden = Set<String>.from(layout['hidden'] ?? []);
 
-    final defs = {
-      for (final raw in widget.columns ?? [])
-        (raw as Map)['column_name']: Map<String, dynamic>.from(raw)
-    };
+    // Si useDefault=true (reset), usar orden del JSON directamente
+    if (useDefault) {
+      for (final raw in widget.columns ?? []) {
+        final d = Map<String, dynamic>.from(raw as Map);
+        cols.add(_makeColumn(d, hidden: false));
+      }
+    } else {
+      // Usar layout guardado
+      final layout = _cachedLayout();
+      final vis = List<String>.from(layout['visible'] ?? []);
+      final hidden = Set<String>.from(layout['hidden'] ?? []);
 
-    for (final f in vis) {
-      final d = defs[f];
-      if (d != null) cols.add(_makeColumn(d, hidden: hidden.contains(f)));
-    }
-    for (final raw in widget.columns ?? []) {
-      final d = Map<String, dynamic>.from(raw as Map);
-      final f = d['column_name'];
-      if (!vis.contains(f)) {
-        cols.add(_makeColumn(d, hidden: hidden.contains(f)));
+      final defs = {
+        for (final raw in widget.columns ?? [])
+          (raw as Map)['column_name']: Map<String, dynamic>.from(raw)
+      };
+
+      for (final f in vis) {
+        final d = defs[f];
+        if (d != null) cols.add(_makeColumn(d, hidden: hidden.contains(f)));
+      }
+      for (final raw in widget.columns ?? []) {
+        final d = Map<String, dynamic>.from(raw as Map);
+        final f = d['column_name'];
+        if (!vis.contains(f)) {
+          cols.add(_makeColumn(d, hidden: hidden.contains(f)));
+        }
       }
     }
 
