@@ -981,7 +981,7 @@ class _OrderWarehouseWidgetState extends State<OrderWarehouseWidget>
                                                   child: Text(
                                                     FFLocalizations.of(context)
                                                         .getText(
-                                                      'n93kx1hi' /* Order warehouse V4.0.5 */,
+                                                      'n93kx1hi' /* Order warehouse V4.0.6 */,
                                                     ),
                                                     style: FlutterFlowTheme.of(
                                                             context)

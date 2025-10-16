@@ -985,9 +985,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'sl': 'Razišči',
     },
     'n93kx1hi': {
-      'en': 'Order warehouse V4.0.5',
-      'es': 'Almacén de pedidos V4.0.5',
-      'sl': 'Skladišče naročil V4.0.5',
+      'en': 'Order warehouse V4.0.6',
+      'es': 'Almacén de pedidos V4.0.6',
+      'sl': 'Skladišče naročil V4.0.6',
     },
     't3kkdl4l': {
       'en': 'Movements',

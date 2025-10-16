@@ -85,7 +85,7 @@ class _Warehouse2WidgetState extends State<Warehouse2Widget>
             safeSetState(() {});
             FFAppState().warehouse2ApiV = (String var1) {
               return var1 +
-                  '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50&custom_name=neq.CARINSKI%20POSTOPEK';
+                  '&order=crono.desc.nullslast&availability=neq.consumed&is_deleted=eq.false&limit=50';
             }(FFAppState().warehouse2ApiV);
           }
           // else: warehouse2ApiV already has the saved query from filterAction
